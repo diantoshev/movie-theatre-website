@@ -1,16 +1,14 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-// function errorHandler(error) {
-//   if (error) {
-//     return error.message;
-//   } else {
-//     return;
-//   }
-// }
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import "./Login.scss";
+
 export default function Login() {
   const [usernameValue, setUsername] = useState("");
   const [passwordValue, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [successfulLoginMessage, setSuccess] = useState("");
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
@@ -32,6 +30,10 @@ export default function Login() {
               data.then((obj) => {
                 localStorage.setItem("user", obj.sessionId);
               });
+              setError("");
+              setPassword("");
+              setUsername("");
+              setSuccess("You have been logged in successfully!");
             } else {
               throw new Error("Wrong credentials!");
             }
@@ -46,29 +48,50 @@ export default function Login() {
   };
   return (
     <>
-      <form onSubmit={handleLoginSubmit}>
-        <label htmlFor="username-email">Enter your username/email:</label>
-        <input
-          value={usernameValue}
-          onChange={(e) => setUsername(e.target.value)}
-          id="username-email"
-          type="text"
-          placeholder="Username or email..."
+      <div className="w-25 p-3 h-25 d-inline-block">
+        <img
+          className="navLoginLogo"
+          src={require("../../assets/logo2_black_small.png")}
+          alt="Site logo"
         />
-        <label htmlFor="password-login">Enter your password:</label>
-        <input
-          value={passwordValue}
-          onChange={(e) => setPassword(e.target.value)}
-          id="password-login"
-          type="password"
-          placeholder="Password..."
-        />
-        <input type="checkbox" id="remember-user" />
-        <label htmlFor="remember-user">remember me?</label>
-        <button type="submit">Log In</button>
-      </form>
-      <Link to='register'>Do not have an account? Register &raquo;</Link>
-      <p>{error.message}</p>
+        <Form onSubmit={handleLoginSubmit}>
+          <Form.Group className="mb-3" controlId="formLoginUsername">
+            <Form.Label>Enter your username/email:</Form.Label>
+            <Form.Control
+              value={usernameValue}
+              onChange={(e) => setUsername(e.target.value)}
+              type="text"
+              placeholder="Username or email..."
+            />
+          </Form.Group>
+          <br />
+          <Form.Group className="mb-3" controlId="formLoginPassword">
+            <Form.Label>Enter your password:</Form.Label>
+            <Form.Control
+              value={passwordValue}
+              onChange={(e) => setPassword(e.target.value)}
+              type="password"
+              placeholder="Password..."
+            />
+          </Form.Group>
+          <br />
+          <Form.Group className="mb-3" controlId="formLoginCheckbox">
+            <Form.Check type="checkbox" label="remember me?" />
+          </Form.Group>
+          <br />
+          <Button
+            className="btn btn-outline-goldLight rounded-2 px-4"
+            type="submit"
+          >
+            Log In
+          </Button>
+        </Form>
+        <br />
+        <Link to="/register">Do not have an account? Register &raquo;</Link>
+        <br />
+        <p>{error.message}</p>
+        <p>{successfulLoginMessage}</p>
+      </div>
     </>
   );
 }
