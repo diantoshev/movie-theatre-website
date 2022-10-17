@@ -4,15 +4,13 @@ import Register from "./modules/RegisterPage/Register";
 import React, { useState } from "react";
 import './App.css';
 import Navbar from './modules/HomePage/components/Navigation/Navigation';
+import RouterLogic from "./modules/Router/Router";
 
 function App() {
   return (
     <div className="App">
       <Navbar />
-      <Login />
-      <br />
-      <br />
-      <Register />
+      <RouterLogic />
     </div>
   );
 }

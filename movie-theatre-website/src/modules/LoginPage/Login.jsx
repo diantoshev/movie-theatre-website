@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { Link } from "react-router-dom";
 // function errorHandler(error) {
 //   if (error) {
 //     return error.message;
@@ -67,7 +67,7 @@ export default function Login() {
         <label htmlFor="remember-user">remember me?</label>
         <button type="submit">Log In</button>
       </form>
-      <a href="">Do not have an account? Register &raquo;</a>
+      <Link to='register'>Do not have an account? Register &raquo;</Link>
       <p>{error.message}</p>
     </>
   );

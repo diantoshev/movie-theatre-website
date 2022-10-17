@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Register() {
   const [usernameValueReg, setUsernameReg] = useState("");
@@ -159,7 +160,7 @@ export default function Register() {
         </label>
         <button type="submit">Register</button>
       </form>
-      <a href="">Have an account? Log in &raquo;</a>
+      <Link to='login'>Have an account? Log in &raquo</Link>
       <p>{error.message}</p>
       <p>{successfulRegMessage}</p>
     </>
