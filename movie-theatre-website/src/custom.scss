@@ -1,0 +1,35 @@
+/*
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      $light,
+  "dark":       $dark
+*/
+
+// New custom color map:
+
+// Importing functions and variables:
+@import '../node_modules/bootstrap/scss/_functions.scss';
+@import '../node_modules/bootstrap/scss/_variables.scss';
+$custom-color-map : ('redPrimary': #A4161A,
+    'redAccent': #660708,
+    'redMid': #BA181B,
+    'redLight': #E5383B,
+    'darkPrimary': #0B090A,
+    'darkMid': #0B090A,
+    'goldDark': #A37C40,
+    'goldLight': #EDD382,
+    'goldMid': #F7B538,
+    'goldMidDarker': #DB7C26,
+    'greyDark': #504F4D,
+    'greyMid': #76736C,
+    'greyLight': #D3D3D3,
+    'greyLigher': #F5F3F4);
+
+$theme-colors: map-merge($custom-color-map, $theme-colors);
+
+// Importing bootstrap from nodes:
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
