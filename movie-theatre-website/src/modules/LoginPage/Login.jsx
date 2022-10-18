@@ -59,11 +59,12 @@ export default function Login() {
   return (
     <>
       <div className="w-25 h-25 d-inline-block">
-        <img
+        {/* <img
           className="navLoginLogo"
           src={require("../../assets/logo2_black_small.png")}
           alt="Site logo"
-        />
+        /> */}{" "}
+        {/** да оставим ли логото? */}
         <Form onSubmit={handleLoginSubmit}>
           <Form.Group className="mb-3" controlId="formLoginUsername">
             <Form.Label>Enter your username/email:</Form.Label>
