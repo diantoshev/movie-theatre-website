@@ -14,13 +14,15 @@ import MovieDetailPage from "../MovieDetailPage/MovieDetail";
 import SeatsPage from "../SeatsPage/SeatsPage";
 import TheatreDetailsPage from '../TheatreDetailPage/TheatreDetail';
 import AllTheatresPage from "../TheatresPage/Theaters";
+import HeroPage from "../HeroPage/HeroPage";
 
 export default function RouterLogic() {
     return (
         <>
             <Routes>
+                <Route path="hero" element={<HeroPage />} />
                 <Route path="home" element={<HomePage />} />
-                <Route path="/" element={<Navigate to='home' replace />} />
+                <Route path="/" element={<Navigate to='hero' replace />} />
                 <Route path="login" element={<LoginPage />} />
                 <Route path="register" element={<RegisterPage />} />
                 <Route path="account" element={<AccountPage />} />
