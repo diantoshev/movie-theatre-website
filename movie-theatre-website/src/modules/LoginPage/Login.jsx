@@ -3,12 +3,14 @@ import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import "./Login.scss";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [usernameValue, setUsername] = useState("");
   const [passwordValue, setPassword] = useState("");
   const [error, setError] = useState("");
   const [successfulLoginMessage, setSuccess] = useState("");
+  const navigate = useNavigate();
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
@@ -27,28 +29,36 @@ export default function Login() {
           .then((resp) => {
             if (resp.ok) {
               const data = resp.json();
-              data.then((obj) => {
-                localStorage.setItem("user", obj.sessionId);
-              });
+              const checkboxRemember = document.getElementById("loginCheckbox");
+              if (checkboxRemember.checked) {
+                data.then((obj) => {
+                  localStorage.setItem("user", obj.sessionId);
+                });
+              }
               setError("");
               setPassword("");
               setUsername("");
               setSuccess("You have been logged in successfully!");
+              navigate("/home");
             } else {
               throw new Error("Wrong credentials!");
             }
           })
-          .catch((err) => setError(err));
+          .catch((err) => {
+            setError(err);
+            setSuccess("");
+          });
       } else {
         throw new Error("Please, fill in all of the required fields!");
       }
     } catch (err) {
       setError(err);
+      setSuccess("");
     }
   };
   return (
     <>
-      <div className="w-25 p-3 h-25 d-inline-block">
+      <div className="w-25 h-25 d-inline-block">
         <img
           className="navLoginLogo"
           src={require("../../assets/logo2_black_small.png")}
@@ -76,7 +86,11 @@ export default function Login() {
           </Form.Group>
           <br />
           <Form.Group className="mb-3" controlId="formLoginCheckbox">
-            <Form.Check type="checkbox" label="remember me?" />
+            <Form.Check
+              type="checkbox"
+              label="remember me?"
+              id="loginCheckbox"
+            />
           </Form.Group>
           <br />
           <Button
