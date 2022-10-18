@@ -100,12 +100,12 @@ export default function Login() {
           >
             Log In
           </Button>
+          <br />
+          <Link to="/register">Do not have an account? Register &raquo;</Link>
+          <br />
+          <p>{error.message}</p>
+          <p>{successfulLoginMessage}</p>
         </Form>
-        <br />
-        <Link to="/register">Do not have an account? Register &raquo;</Link>
-        <br />
-        <p>{error.message}</p>
-        <p>{successfulLoginMessage}</p>
       </div>
     </>
   );
