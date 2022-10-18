@@ -102,72 +102,96 @@ export default function Register() {
 
   return (
     <>
-      <form onSubmit={handleRegistrationSubmit}>
-        <label htmlFor="username">Enter your username:</label>
-        <input
-          value={usernameValueReg}
-          onChange={(e) => setUsernameReg(e.target.value)}
-          id="username"
-          type="text"
-          placeholder="Username..."
-        />
-        <label htmlFor="password">Enter your password:</label>{" "}
-        {/**Ще зададем ли ограничение за паролите - например да има знак, цифра и буква? */}
-        <input
-          value={passwordValueReg}
-          onChange={(e) => setPasswordReg(e.target.value)}
-          id="password"
-          type="password"
-          placeholder="Password..."
-        />
-        <label htmlFor="confirmed-password">Confirm your password:</label>
-        <input
-          value={confirmedPasswordValue}
-          onChange={(e) => setConfirmedPassword(e.target.value)}
-          id="confirmed-password"
-          type="password"
-          placeholder="Confirm password..."
-        />
-        <label htmlFor="email">Email:</label>{" "}
-        {/** Отново да се помисли дали email е необходим, тъй като api на Слави не гледа email */}
-        <input
-          value={emailValue}
-          onChange={(e) => setEmail(e.target.value)}
-          id="email"
-          type="email"
-          placeholder="Email..."
-        />
-        <label htmlFor="first-last-names">First and Last name:</label>
-        <input
-          value={firstLastNames}
-          onChange={(e) => setFirstLastNames(e.target.value)}
-          id="first-last-names"
-          type="text"
-          placeholder="Names..."
-        />
-        <label htmlFor="birth-date">Date of birth:</label>
-        <input
-          value={birthDate}
-          onChange={(e) => setBirthDate(e.target.value)}
-          id="birth-date"
-          type="date"
-          placeholder="Date of birth..."
-        />
-        <input type="checkbox" id="terms-conditions-checkbox" />
-        <label htmlFor="terms-conditions-checkbox">
-          Terms &amp; Conditions
-        </label>
-        <input type="checkbox" id="privacy-checkbox" />
-        <label htmlFor="privacy-checkbox">Privacy policy</label>
-        <input type="checkbox" id="age-checkbox" />
-        <label htmlFor="age-checkbox">
-          I certify that i am at least 16 years old
-        </label>
-        <button type="submit">Register</button>
-      </form>
-      <Link to='/login'>Have an account? Log in &raquo</Link>
-      <p>{error.message}</p>
-      <p>{successfulRegMessage}</p>
+      <div className="w-25 h-25 d-inline-block">
+        <Form onSubmit={handleRegistrationSubmit}>
+          <Form.Group className="mb-3" controlId="formRegUsername">
+            <Form.Label>Enter your username:</Form.Label>
+            <Form.Control
+              value={usernameValueReg}
+              onChange={(e) => setUsernameReg(e.target.value)}
+              type="text"
+              placeholder="Username..."
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formRegPassword">
+            <Form.Label>Enter your password:</Form.Label>
+            {/**Ще зададем ли ограничение за паролите - например да има знак, цифра и буква? */}
+            <Form.Control
+              value={passwordValueReg}
+              onChange={(e) => setPasswordReg(e.target.value)}
+              type="password"
+              placeholder="Password..."
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formRegConfirmedPassword">
+            <Form.Label>Confirm your password:</Form.Label>
+            <Form.Control
+              value={confirmedPasswordValue}
+              onChange={(e) => setConfirmedPassword(e.target.value)}
+              type="password"
+              placeholder="Confirm password..."
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formRegEmail">
+            <Form.Label>Email:</Form.Label>
+            {/** Отново да се помисли дали email е необходим, тъй като api на Слави не гледа email */}
+            <Form.Control
+              value={emailValue}
+              onChange={(e) => setEmail(e.target.value)}
+              type="email"
+              placeholder="Email..."
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formFirstLastNames">
+            <Form.Label>First and Last name:</Form.Label>
+            <Form.Control
+              value={firstLastNames}
+              onChange={(e) => setFirstLastNames(e.target.value)}
+              type="text"
+              placeholder="Names..."
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formBirthDate">
+            <Form.Label>Date of birth:</Form.Label>
+            <Form.Control
+              value={birthDate}
+              onChange={(e) => setBirthDate(e.target.value)}
+              type="date"
+              placeholder="Date of birth..."
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formRegTCCheckbox">
+            <Form.Check
+              type="checkbox"
+              label="Terms &amp; Condition"
+              id="terms-conditions-checkbox"
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formPrivacyCheckbox">
+            <Form.Check
+              type="checkbox"
+              label="Privacy policy"
+              id="privacy-checkbox"
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formAgeCheckbox">
+            <Form.Check
+              type="checkbox"
+              label="I certify that i am at least 16 years old"
+              id="age-checkbox"
+            />
+          </Form.Group>
+          <Button
+            className="btn btn-outline-goldLight rounded-2 px-4"
+            type="submit"
+          >
+            Register
+          </Button>
+          <Link to="/login">Have an account? Log in &raquo;</Link>
+          <p>{error.message}</p>
+          <p>{successfulRegMessage}</p>
+        </Form>
+      </div>
     </>
   );
 }
