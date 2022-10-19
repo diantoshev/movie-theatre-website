@@ -1,10 +1,8 @@
 import "./App.css";
-import Login from "./modules/LoginPage/Login";
-import Register from "./modules/RegisterPage/Register";
 import React, { useState } from "react";
 import './App.css';
-import Navbar from './modules/HomePage/components/Navigation/Navigation';
-import RouterLogic from "./modules/Router/Router";
+import Navbar from './pages/HomePage/components/Navigation/Navigation';
+import RouterLogic from "./pages/Router/Router";
 
 function App() {
   return (

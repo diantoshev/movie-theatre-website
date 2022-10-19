@@ -1,0 +1,30 @@
+.pageContainer {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: goldenrod;
+    min-height: fit-content;
+    // background-color: black;
+    // background-image: url('../../../assets/backdrop.jpg');
+
+    .offsetNav {
+        height: 120px;
+        position: absolute;
+        width: 100%;
+        top: 120px;
+        display: flex;
+        justify-content: center;
+        padding: 3rem;
+    }
+
+    img {
+        object-fit: cover;
+        height: 100vh;
+        width: 100%;
+        z-index: -9;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
