@@ -1,14 +1,12 @@
-import GoldContainer from '../../components/GoldContainer/GoldContainer';
-import GreyContainer from '../../components/GreyContainer/GeryContainer';
+
 import PageContainer from '../../components/PageContainer/PageContainer';
-import RedButton from '../../components/Buttons/RedButton';
-import RedContainer from '../../components/RedContainer/RedContainer';
-import GoldButton from '../../components/Buttons/GoldButton';
-import DarkButton from '../../components/Buttons/DarkButton';
+import AnimatePage from '../../components/AnmatePages/AnimatePage';
 export default function AllMoviesPage(props) {
     return <PageContainer>
-        <GoldContainer>This is page where all available movies will be displayed.<RedButton>Test</RedButton></GoldContainer >
-        <GreyContainer>This is page where all available movies will be displayed.<GoldButton>Test</GoldButton></GreyContainer>
-        <RedContainer>This is page where all available movies will be displayed.<DarkButton>Test</DarkButton></RedContainer>
+        <AnimatePage>
+            <div>
+                <h1>This will be a page where we display all movies available.</h1>
+            </div>
+        </AnimatePage>
     </PageContainer >
 }

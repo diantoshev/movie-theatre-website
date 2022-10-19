@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import HomePage from "../HomePage/Home";
 import LoginPage from "../LoginPage/LoginPage";
 import RegisterPage from "../RegisterPage/RegisterPage";
@@ -15,11 +15,13 @@ import SeatsPage from "../SeatsPage/SeatsPage";
 import TheatreDetailsPage from '../TheatreDetailPage/TheatreDetail';
 import AllTheatresPage from "../TheatresPage/Theaters";
 import HeroPage from "../HeroPage/HeroPage";
+import { AnimatePresence } from 'framer-motion';
 
 export default function RouterLogic() {
+    const location = useLocation();
     return (
-        <>
-            <Routes>
+        <>  <AnimatePresence>
+            <Routes location={location} key={location.pathname}>
                 <Route path="hero" element={<HeroPage />} />
                 <Route path="home" element={<HomePage />} />
                 <Route path="/" element={<Navigate to='hero' replace />} />
@@ -38,6 +40,7 @@ export default function RouterLogic() {
                 <Route path="theatres" element={<AllTheatresPage />} />
                 <Route path="theatres/:id" element={<TheatreDetailsPage />} />
             </Routes>
+        </AnimatePresence>
         </>
     )
 }
