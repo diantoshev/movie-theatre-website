@@ -1,0 +1,19 @@
+.theater-big-panel-design {
+  border-radius: 10px;
+  flex-wrap: wrap;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.theater-panel-design {
+  min-width: 60%;
+  min-height: 8vh !important;
+  border-radius: 10px;
+  align-items: flex-start;
+  justify-content: space-around;
+  align-self: flex-start;
+}
+.btn-hall {
+  margin: 15px;
+  min-width: 10%;
+}
