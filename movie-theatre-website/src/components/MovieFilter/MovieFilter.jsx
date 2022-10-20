@@ -4,7 +4,7 @@ import "./MovieFIlter.scss";
 
 export default function MovieFilter() {
     return (
-        <GreyContainer className="container-xl">
+        <GreyContainer className="container-xl py-4 movieFilterForm__container">
             <Form className='movieFilterForm'>
                 <FormGroup className="formSelects">
                     <Form.Select className="bg-goldMid">

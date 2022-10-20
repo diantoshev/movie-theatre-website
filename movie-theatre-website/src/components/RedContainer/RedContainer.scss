@@ -1,9 +1,8 @@
 .redContainer {
     display: flex;
-    padding: 40px;
-    opacity: 90%;
     justify-content: center;
     align-items: center;
     filter: drop-shadow(16px 26px 10px #000);
     box-shadow: 11px 12px 38px 11px rgba(0, 0, 0, 0.75) inset;
+    background: rgba(164, 22, 26, 0.7);
 }

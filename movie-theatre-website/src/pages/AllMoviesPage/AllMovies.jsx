@@ -1,6 +1,6 @@
 
 import PageContainer from '../../components/PageContainer/PageContainer';
-import AnimatePage from '../../components/AnmatePages/AnimatePage';
+import AnimatePage from '../../components/AnimatePages/AnimatePage';
 export default function AllMoviesPage(props) {
     return <PageContainer>
         <AnimatePage>

@@ -1,0 +1,19 @@
+.carousel__container {
+    display: block;
+
+    .carousel-home {}
+
+    .carousel-item {
+        overflow: hidden !important;
+        min-height: 700px;
+        object-fit: cover;
+        object-position: bottom;
+    }
+
+    .carousel-home {
+
+        img {
+            overflow: hidden;
+        }
+    }
+}

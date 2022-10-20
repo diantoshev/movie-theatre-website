@@ -1,9 +1,8 @@
 .goldContainer {
     display: flex;
-    opacity: 90%;
     justify-content: center;
     align-items: center;
     filter: drop-shadow(16px 26px 10px #000);
     box-shadow: 11px 12px 38px 11px rgba(0, 0, 0, 0.75) inset;
-
+    background-color: rgb(247, 181, 56, 0.5);
 }
