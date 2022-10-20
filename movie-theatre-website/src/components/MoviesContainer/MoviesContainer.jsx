@@ -1,10 +1,19 @@
 import MovieCard from "../MovieCard/MovieCard";
-import GoldContainer from "../GoldContainer/GoldContainer";
+import RedContainer from '../RedContainer/RedContainer';
+import './MoviesContainer.scss';
 
 export default function MoviesContainer() {
     return (
-        <GoldContainer className="my-3 p-5">
-            <MovieCard></MovieCard>
-        </GoldContainer>
+        <RedContainer className="movies__containter container-xxl my-3 p-5 d-flex gap-5 flex-wrap justify-content-evenly">
+            <MovieCard />
+            <MovieCard />
+            <MovieCard />
+            <MovieCard />
+            <MovieCard />
+            <MovieCard />
+            <MovieCard />
+            <MovieCard />
+            <MovieCard />
+        </RedContainer>
     );
 }
