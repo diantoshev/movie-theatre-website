@@ -1,10 +1,10 @@
 import GreyContainer from "../GreyContainer/GeryContainer"
-import { Form, FormControl, FormGroup, FormLabel } from "react-bootstrap";
+import { Form, FormControl, FormGroup } from "react-bootstrap";
 import "./MovieFIlter.scss";
 
 export default function MovieFilter() {
     return (
-        <GreyContainer>
+        <GreyContainer className="container-xl">
             <Form className='movieFilterForm'>
                 <FormGroup className="formSelects">
                     <Form.Select className="bg-goldMid">
@@ -22,7 +22,6 @@ export default function MovieFilter() {
                 </FormGroup>
                 <p>OR</p>
                 <FormGroup>
-                    <FormLabel>Search for a movie</FormLabel>
                     <FormControl type='text' className='bg-goldMid' placeholder="Search for a movie..."></FormControl>
                 </FormGroup>
             </Form>

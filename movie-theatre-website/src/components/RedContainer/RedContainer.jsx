@@ -1,8 +1,9 @@
 import './RedContainer.scss';
 
 function RedContainer(props) {
+    const classes = props.className ? 'bg-redAccent redContainer ' + props.className : 'bg-redAccent redContainer';
     return (
-        <div className='bg-redAccent redContainer'>
+        <div className={classes}>
             {props.children}
         </div>
     );

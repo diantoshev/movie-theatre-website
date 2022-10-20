@@ -5,8 +5,9 @@ export default function PageContainer(props) {
 
     const classes = 'pageContainer';
     return <div className={classes}>
-        <div className='offsetNav'>{props.children}</div>
-        <img src={backdrop} alt="backdrop" />
+        <div className='offsetNav bg-darkMid'></div>
+        <div className='pageContent w-100'>{props.children}</div>
+        <img src={backdrop} alt="backdrop" className='backdrop-img' />
     </div>
 
 };

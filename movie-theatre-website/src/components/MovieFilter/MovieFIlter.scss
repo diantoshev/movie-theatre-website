@@ -1,17 +1,42 @@
 .movieFilterForm {
     display: flex;
-    gap: 20px;
+    gap: 1rem;
     justify-content: center;
     align-items: center;
-    width: 800px;
+    min-width: 500px;
+    flex-wrap: wrap;
 
     .formSelects {
         display: flex;
         flex-wrap: nowrap;
+        gap: 1rem;
+        flex-direction: row;
     }
 
-    // input,
-    // select {
-    //     width: 200px;
-    // }
+    p {
+        font-size: larger;
+        font-weight: 700;
+        vertical-align: center;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    input,
+    select {
+        min-width: 350px;
+    }
+
+    .formSelects,
+    .movieFilterForm {
+        // display: flex;
+        flex-wrap: wrap !important;
+        gap: 1rem;
+        flex-direction: column !important;
+    }
+
+    .movieFilterForm {
+        width: 100% !important;
+    }
 }

@@ -7,12 +7,12 @@ import GoldButton from '../Buttons/GoldButton';
 export default function Navigation() {
 
     return (
-        <Navbar bg="transperent" expand="lg" className='nav w-100' fixed='top'>
+        <Navbar bg="transparent" expand="lg" className='nav w-100' fixed='top'>
             <div className="container-fluid w-100">
                 <Navbar.Brand href="#home">
                     <Link to='home'><img className='navLogo' src={require('../../assets/logo2_red_medium-2.png')} alt="Site logo"></img></Link>
                 </Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" className='bg-goldDark' />
+                <Navbar.Toggle aria-controls="basic-navbar-nav" className='bg-goldMid' />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="justify-content-between w-100 mx-0">
                         <Link to='/theatres'><GoldButton>Program</GoldButton></Link>

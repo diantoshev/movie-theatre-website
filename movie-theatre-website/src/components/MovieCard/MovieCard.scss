@@ -1,0 +1,31 @@
+.movieCard__container {
+    max-height: 300px;
+
+}
+
+.movieCard-img {
+    max-height: 300px;
+    max-width: 200px;
+    margin-bottom: 30px;
+}
+
+.movieTitle {
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.movieCard {
+    box-shadow: 0px 0px 23px 8px rgba(237, 225, 48, 0.4);
+    max-width: 300px;
+}
+
+.movieCard__body {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
