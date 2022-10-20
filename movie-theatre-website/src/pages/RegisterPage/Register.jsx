@@ -14,7 +14,12 @@ export default function Register() {
   const [birthDate, setBirthDate] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const [show] = useState(true);
+  const [show, setShow] = useState(true);
+
+  const handleClose = () => {
+    setShow(false);
+    navigate("/home");
+  };
 
   const handleRegistrationSubmit = (e) => {
     e.preventDefault();
@@ -84,10 +89,10 @@ export default function Register() {
 
   return (
     <>
-      <Modal backdrop="static" show={show}>
+      <Modal show={show} onHide={handleClose}>
         <div className="w-100 h-25 d-inline-block fst-italic reg-style">
           <Form onSubmit={handleRegistrationSubmit}>
-            <Modal.Header>
+            <Modal.Header closeButton>
               <Modal.Title>
                 <p>{error}</p>
               </Modal.Title>
