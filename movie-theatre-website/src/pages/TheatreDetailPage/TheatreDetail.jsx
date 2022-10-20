@@ -1,6 +1,13 @@
-
-import PageContainer from '../../components/PageContainer/PageContainer';
+import PageContainer from "../../components/PageContainer/PageContainer";
+import TheatreInfoPanel from "./components/TheaterInfo/TheaterInfo";
+import "./TheatreDetail.scss";
 
 export default function TheatreDetailsPage(props) {
-    return <PageContainer> <h1>Page with detailed overview of a theatre and available movies in program</h1></PageContainer>
+  return (
+    <PageContainer>
+      <div className="page-container-design">
+        <TheatreInfoPanel />
+      </div>
+    </PageContainer>
+  );
 }

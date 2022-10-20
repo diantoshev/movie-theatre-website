@@ -7,7 +7,7 @@ export default function SimpleMap() {
     <>
       <div className="map-image">
         <GreyContainer>
-          <img src={require("./assets/map.png")} alt="map" />{" "}
+          <img src={require("./assets/map.png")} alt="map" />
           {/**да говорим със Слави за картата - 
     "@types/google-map-react": "^2.1.7",
     "google-map-react": "^2.2.0", */}
