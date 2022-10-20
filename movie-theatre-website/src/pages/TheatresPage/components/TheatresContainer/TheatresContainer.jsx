@@ -4,10 +4,10 @@ import "./TheatresContainer.scss";
 export default function TheatresContainer() {
   return (
     <div className="theatres-container-design">
-      <GreyContainer>
+      <GreyContainer className="theatres-container">
         <TheaterCards />
       </GreyContainer>
-      <GreyContainer>
+      <GreyContainer className="theatres-container">
         <TheaterCards />
       </GreyContainer>
     </div>

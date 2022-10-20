@@ -4,12 +4,8 @@ import "./TheaterCard.scss";
 export default function TheaterCards() {
   return (
     <CardGroup className="cards-group-design">
-      <Card>
-        <Card.Img
-          className="cards-design"
-          variant="top"
-          src={require("./assets/cinema3.jpg")}
-        />
+      <Card className="card-design">
+        <Card.Img variant="top" src={require("./assets/cinema3.jpg")} />
         <Card.Body>
           <Card.Title>Moviespot</Card.Title>
           <Card.Text>
@@ -21,12 +17,8 @@ export default function TheaterCards() {
           </Card.Text>
         </Card.Body>
       </Card>
-      <Card>
-        <Card.Img
-          className="cards-design"
-          variant="top"
-          src={require("./assets/cinema3.jpg")}
-        />
+      <Card className="card-design">
+        <Card.Img variant="top" src={require("./assets/cinema3.jpg")} />
         <Card.Body>
           <Card.Title>Moviespot</Card.Title>
           <Card.Text>
@@ -38,12 +30,8 @@ export default function TheaterCards() {
           </Card.Text>
         </Card.Body>
       </Card>
-      <Card>
-        <Card.Img
-          className="cards-design"
-          variant="top"
-          src={require("./assets/cinema3.jpg")}
-        />
+      <Card className="card-design">
+        <Card.Img variant="top" src={require("./assets/cinema3.jpg")} />
         <Card.Body>
           <Card.Title>Moviespot</Card.Title>
           <Card.Text>
