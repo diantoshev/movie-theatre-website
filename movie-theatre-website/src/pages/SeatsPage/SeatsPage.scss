@@ -1,0 +1,18 @@
+.seatMap__container,
+.orderVertical__container {
+    min-width: 500px;
+}
+
+
+@media (max-width:1178px) {
+
+    .wrapOnMobile {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+
+        .actionButtons {
+            justify-content: space-evenly;
+        }
+    }
+}

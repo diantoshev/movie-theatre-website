@@ -1,0 +1,29 @@
+.orderInfo__container {
+
+    .orderInfo_sectionContainer {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+
+    img {
+        max-height: 250px;
+        box-shadow: 4px 2px 3px rgb(0 0 0);
+        margin-bottom: 2rem;
+    }
+
+    .orderInfo__container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+
+        p {
+            font-size: 1.2rem;
+            width: 100%;
+            text-align: center;
+            text-shadow: 4px 2px 3px rgb(0 0 0);
+            margin: 0;
+        }
+    }
+}

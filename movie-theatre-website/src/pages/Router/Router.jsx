@@ -8,7 +8,6 @@ import AdminTheatreEditPage from '../AdminTheatreEditPage/AdminTheatreEditPage';
 import AdminTheatresPage from '../AdminTheatresPage/AdminTheatresPage';
 import AllMoviesPage from '../AllMoviesPage/AllMovies';
 import BookingPage from '../BookingPage/BookingPage';
-import BuyTicketsPage from "../BuyTicketsPage/BuyTicketsPage";
 import ErrorPage from "../ErrorPage/ErrorPage";
 import MovieDetailPage from "../MovieDetailPage/MovieDetail";
 import SeatsPage from "../SeatsPage/SeatsPage";
@@ -34,7 +33,6 @@ export default function RouterLogic() {
                 <Route path="movies" element={<AllMoviesPage />} />
                 <Route path="movies/:id" element={<MovieDetailPage />} />
                 <Route path="booking-complete" element={<BookingPage />} />
-                <Route path="buy-ticket" element={<BuyTicketsPage />} />
                 <Route path="*" element={<ErrorPage />} />
                 <Route path="choose-seats" element={<SeatsPage />} />
                 <Route path="theatres" element={<AllTheatresPage />} />

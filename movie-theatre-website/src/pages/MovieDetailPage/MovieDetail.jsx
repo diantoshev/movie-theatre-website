@@ -1,5 +1,11 @@
+import AnimatePage from '../../components/AnimatePages/AnimatePage';
 import PageContainer from '../../components/PageContainer/PageContainer';
+import MovieDetailPanel from './components/MovieDetailPanel/MovieDetailPanel';
 
 export default function MovieDetailPage(props) {
-    return <PageContainer> <h1>Page with detailed overview of a movie</h1></PageContainer>
+    return <PageContainer>
+        <AnimatePage>
+            <MovieDetailPanel />
+        </AnimatePage>
+    </PageContainer>
 }
