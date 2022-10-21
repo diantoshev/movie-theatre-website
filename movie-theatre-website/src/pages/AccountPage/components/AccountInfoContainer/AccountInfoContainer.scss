@@ -1,0 +1,25 @@
+.account-info-name {
+    min-width: 500px;
+    width: 75%;
+    min-height: 340px;
+    margin-top: 100px;
+    align-items:flex-start;
+    border-radius: 10px;
+    font-style: italic;
+}
+.account-info-btn{
+    min-width: 100%;
+}
+.change-profile-data-design{
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    align-self: flex-end;
+    min-width: 100%;
+    color:#660708;
+    box-shadow: none;
+    form {
+        button {
+            margin-bottom:10px;
+        }
+    }
+}
