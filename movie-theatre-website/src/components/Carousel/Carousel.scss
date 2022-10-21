@@ -1,19 +1,23 @@
 .carousel__container {
     display: block;
 
-    .carousel-home {}
+    // .carousel-home {}
 
     .carousel-item {
-        overflow: hidden !important;
-        min-height: 700px;
-        object-fit: cover;
-        object-position: bottom;
+        // overflow: hidden;
+        // object-fit: fill;
+        // object-position: bottom;
+        max-height: 60vh;
+        min-height: 40vh;
+        object-fit: scale-down;
+        object-position: center;
     }
 
     .carousel-home {
 
         img {
-            overflow: hidden;
+            // overflow: hidden !important;
+            max-width: 1920px;
         }
     }
 }
