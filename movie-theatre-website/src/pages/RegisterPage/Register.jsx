@@ -9,9 +9,7 @@ export default function Register() {
   const [usernameValueReg, setUsernameReg] = useState("");
   const [passwordValueReg, setPasswordReg] = useState("");
   const [confirmedPasswordValue, setConfirmedPassword] = useState("");
-  const [emailValue, setEmail] = useState("");
   const [firstLastNames, setFirstLastNames] = useState("");
-  const [birthDate, setBirthDate] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const [show, setShow] = useState(true);
@@ -27,29 +25,13 @@ export default function Register() {
       !usernameValueReg ||
       !passwordValueReg ||
       !confirmedPasswordValue ||
-      !emailValue ||
-      !firstLastNames ||
-      !birthDate
+      !firstLastNames
     ) {
       setError("Please, fill in the required fields!");
     } else {
       if (passwordValueReg !== confirmedPasswordValue) {
         setError("The password has not been confirmed!");
       } else {
-        const currentDate = new Date();
-        const birthDateConst = new Date(birthDate);
-        const diffYears =
-          currentDate.getFullYear() - birthDateConst.getFullYear();
-
-        if (
-          !diffYears ||
-          diffYears < 16 ||
-          (diffYears === 16 && currentDate.getDate() < birthDateConst.getDate())
-        ) {
-          setError(
-            "You should be at least 16 years old in order to register on this site!"
-          );
-        } else {
           const checkboxTC = document.getElementById(
             "terms-conditions-checkbox"
           );
@@ -81,11 +63,10 @@ export default function Register() {
             );
           } else {
             setError("Please, check all of the checkboxes!");
-          }
+          }        
         }
       }
-    }
-  };
+    };
 
   return (
     <>
@@ -135,16 +116,6 @@ export default function Register() {
                   placeholder="Confirm password..."
                 />
               </Form.Group>
-              <Form.Group className="mb-3 text-style" controlId="formRegEmail">
-                <Form.Label>Email:</Form.Label>
-                {/** Отново да се помисли дали email е необходим, тъй като api на Слави не гледа email */}
-                <Form.Control
-                  value={emailValue}
-                  onChange={(e) => setEmail(e.target.value)}
-                  type="email"
-                  placeholder="Email..."
-                />
-              </Form.Group>
               <Form.Group
                 className="mb-3 text-style"
                 controlId="formFirstLastNames"
@@ -155,15 +126,6 @@ export default function Register() {
                   onChange={(e) => setFirstLastNames(e.target.value)}
                   type="text"
                   placeholder="Names..."
-                />
-              </Form.Group>
-              <Form.Group className="mb-3 text-style" controlId="formBirthDate">
-                <Form.Label>Date of birth:</Form.Label>
-                <Form.Control
-                  value={birthDate}
-                  onChange={(e) => setBirthDate(e.target.value)}
-                  type="date"
-                  placeholder="Date of birth..."
                 />
               </Form.Group>
               <br />
@@ -197,12 +159,9 @@ export default function Register() {
                   Register
                 </button>
               </Form.Group>
-              <br />
-              <br />
               <Form.Group className="text-style" controlId="linkRegLogin">
                 <Link to="/login">Have an account? Log in &raquo;</Link>
               </Form.Group>
-              <br />
               <br />
             </Modal.Body>
           </Form>

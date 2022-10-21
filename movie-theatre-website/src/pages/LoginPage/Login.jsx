@@ -24,7 +24,7 @@ export default function Login() {
       const myInit = {
         method: "POST",
         body: JSON.stringify({
-          username: `${usernameValue}`, // заявката е само за username, няма email, да се помисли дали user-а да се login само с username или да търсим друг вариант
+          username: `${usernameValue}`, 
           password: `${passwordValue}`,
         }),
         headers: { "Content-Type": "application/json" },
@@ -37,7 +37,7 @@ export default function Login() {
             const checkboxRemember = document.getElementById("loginCheckbox");
             if (checkboxRemember.checked) {
               data.then((obj) => {
-                localStorage.setItem("user", obj.sessionId);
+                localStorage.setItem("moviespotUser", obj.sessionId);
               });
             }
             setError("");
@@ -55,8 +55,8 @@ export default function Login() {
   };
   return (
     <>
-      <Modal show={show} onHide={handleClose}>
-        <div className="w-100 h-25 d-inline-block fst-italic login-style">
+      <Modal size="sm" show={show} onHide={handleClose}>
+        <div className="h-25 fst-italic login-style">
           <Form onSubmit={handleLoginSubmit}>
             <Modal.Header closeButton>
               <Modal.Title>
@@ -68,12 +68,12 @@ export default function Login() {
                 className="mb-3 text-style"
                 controlId="formLoginUsername"
               >
-                <Form.Label>Enter your username/email:</Form.Label>
+                <Form.Label>Enter your username:</Form.Label>
                 <Form.Control
                   value={usernameValue}
                   onChange={(e) => setUsername(e.target.value)}
                   type="text"
-                  placeholder="Username or email..."
+                  placeholder="Username..."
                 />
               </Form.Group>
               <br />
@@ -97,7 +97,6 @@ export default function Login() {
                   id="loginCheckbox"
                 />
               </Form.Group>
-              <br />
               <Form.Group className="mb-3 text-style" controlId="btnLogin">
                 <button
                   className="btn btn-outline-goldLight rounded-2 px-4"
@@ -106,10 +105,8 @@ export default function Login() {
                   Log In
                 </button>
               </Form.Group>
-              <br />
-              <br />
               <Form.Group className="text-style" controlId="linkReg">
-                <Link to="/register">
+                <Link to="/register" className="register-link">
                   Do not have an account? Register &raquo;
                 </Link>
                 <br />
