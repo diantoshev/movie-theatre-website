@@ -1,7 +1,7 @@
 import Card from "react-bootstrap/Card";
 import CardGroup from "react-bootstrap/CardGroup";
 import "./TheaterCard.scss";
-export default function TheaterCards() {
+export default function TheaterCard() {
   return (
     <CardGroup className="cards-group-design">
       <Card className="card-design">
