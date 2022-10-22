@@ -1,5 +1,5 @@
 import PageContainer from "../../components/PageContainer/PageContainer";
-import TheatreInfoPanel from "./components/TheaterInfo/TheaterInfo";
+import TheatreInfoPanel from "../../components/TheaterInfo/TheaterInfo";
 import "./TheatreDetail.scss";
 import TheaterPanel from "./components/TheaterPanel/TheaterPanel";
 

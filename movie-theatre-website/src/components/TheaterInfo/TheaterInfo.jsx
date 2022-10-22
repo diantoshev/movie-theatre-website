@@ -1,4 +1,4 @@
-import GoldContainer from "../../../../components/GoldContainer/GoldContainer";
+import GoldContainer from "../GoldContainer/GoldContainer";
 import "./TheaterInfo.scss";
 
 export default function TheatreInfoPanel() {
