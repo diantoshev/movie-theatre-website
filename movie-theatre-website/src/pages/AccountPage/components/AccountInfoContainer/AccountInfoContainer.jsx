@@ -23,13 +23,13 @@ export default function AccountInfoContainer() {
       <GoldContainer className="change-profile-data-design">
         <Form>
           <div>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Group className="mb-3" controlId="formChangeUser">
               <Form.Label>Change your user:</Form.Label>
-              <Form.Control type="email" placeholder="Alex1234" />
+              <Form.Control type="text" placeholder="Alex1234" />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Group className="mb-3" controlId="formChangeUserNames">
               <Form.Label>Change your names:</Form.Label>
-              <Form.Control type="email" placeholder="Alexander Tsvetkov" />
+              <Form.Control type="text" placeholder="Alexander Tsvetkov" />
             </Form.Group>
           </div>
           <DarkButton type="submit">Save</DarkButton>
