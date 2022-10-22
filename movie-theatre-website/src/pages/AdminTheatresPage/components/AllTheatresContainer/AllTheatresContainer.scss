@@ -1,0 +1,14 @@
+.all-theatres-container-design {
+  flex-wrap: wrap;
+  div {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    button {
+      margin-top: 10px;
+    }
+  }
+}
+.theater-card-design {
+  max-width: 250px;
+}
