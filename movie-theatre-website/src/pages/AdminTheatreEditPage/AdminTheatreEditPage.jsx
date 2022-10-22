@@ -1,5 +1,15 @@
-import PageContainer from '../../components/PageContainer/PageContainer';
+import PageContainer from "../../components/PageContainer/PageContainer";
+import TheatreInfoPanel from "../../components/TheaterInfo/TheaterInfo";
+import EditTheater from "./components/EditTheater/EditTheater";
+import "./AdminTheatreEditPage.scss";
 
 export default function EditTheatrePage(props) {
-    return <PageContainer> <h1>This is Edit theatres page, where admin will add/remove cinemas, screening, etc.</h1></PageContainer>
+  return (
+    <PageContainer>
+      <div className="admin-theater-page-container-design">
+        <TheatreInfoPanel />
+        <EditTheater />
+      </div>
+    </PageContainer>
+  );
 }
