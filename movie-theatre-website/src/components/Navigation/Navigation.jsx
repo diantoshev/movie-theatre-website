@@ -9,7 +9,7 @@ export default function Navigation() {
     return (
         <Navbar bg="transparent" expand="lg" className='nav w-100' fixed='top'>
             <div className="container-fluid w-100">
-                <Navbar.Brand href="#home">
+                <Navbar.Brand>
                     <Link to='home'><img className='navLogo' src={require('../../assets/logo2_red_medium-2.png')} alt="Site logo"></img></Link>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" className='bg-goldMid' />

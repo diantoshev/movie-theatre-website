@@ -20,13 +20,13 @@ $custom-color-map : ('redPrimary': #A4161A,
   'redLight': #E5383B,
   'darkPrimary': #0B090A,
   'darkMid': #0B090A,
-  'goldDark': #bb9458,
+  'goldDark': #cd9e47,
   'goldLight': #EDD382,
   'goldMid': #F7B538,
   'goldMidDarker': #DB7C26,
   'greyDark': #504F4D,
   'greyMid': #76736C,
-  'greyLight': #D3D3D3,
+  'greyLight': #b0abab,
   'greyLigher': #F5F3F4);
 
 $theme-colors: map-merge($custom-color-map, $theme-colors);

@@ -1,0 +1,29 @@
+.adminAccordion {
+    border-color: #504F4D;
+
+    .accordion-body,
+    .accordion-button {
+        background-color: #dea844 !important;
+        border-color: #504F4D;
+    }
+
+    button {
+        color: #504F4D;
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+
+    button:not(.collapsed) {
+        color: #BA181B;
+    }
+
+    button:focus {
+        border-color: #BA181B;
+    }
+}
+
+.adminAccordion:focus {
+    * {
+        border-color: #504F4D;
+    }
+}

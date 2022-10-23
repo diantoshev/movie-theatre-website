@@ -1,5 +1,6 @@
 import GreyContainer from '../GreyContainer/GeryContainer';
 import './OrderInfo.scss';
+import Tilt from 'react-tilt'
 
 
 function OrderInfo() {
@@ -9,8 +10,10 @@ function OrderInfo() {
             <div className="row orderInfo_sectionContainer">
                 <div className='col-sm'>
                     <div className="d-flex gap-1 flex-column justify-content-center align-items-center titlePoster__container col">
-                        <h3 className="movieTitle">Wierd Al Yankovic</h3>
-                        <img src='https://m.media-amazon.com/images/M/MV5BODZmNThjMDItODE2Yy00NDNmLThiODEtZGNmZGE3MTdmMjMwXkEyXkFqcGdeQXVyMTM1MTE1NDMx._V1_SX300.jpg' alt='Movie Title'></img>
+                        <h3 className="movieTitle mb-3">Wierd Al Yankovic</h3>
+                        <Tilt className="Tilt" options={{ max: 25, scale: 1.1 }}>
+                            <img src='https://m.media-amazon.com/images/M/MV5BODZmNThjMDItODE2Yy00NDNmLThiODEtZGNmZGE3MTdmMjMwXkEyXkFqcGdeQXVyMTM1MTE1NDMx._V1_SX300.jpg' alt='Movie Title'></img>
+                        </Tilt>
                     </div>
                 </div>
                 <div className='col-lg orderInfo__container'>
