@@ -4,6 +4,7 @@ import MovieFilter from '../../components/MovieFilter/MovieFilter'
 import MoviesContainer from '../../components/MoviesContainer/MoviesContainer';
 import HomeCarousel from '../../components/Carousel/Carousel';
 import AdminPanel from '../../components/AdminPanel/AdminPanel';
+import FoodMenu from '../../components/FoodMenuPanel/FoodMenuPanel';
 export default function HomePage(props) {
     const isLogged = true;
     const isAdmin = true;
@@ -13,6 +14,7 @@ export default function HomePage(props) {
             <HomeCarousel></HomeCarousel>
             <MovieFilter></MovieFilter>
             <MoviesContainer />
+            <FoodMenu />
         </AnimatePage>
     </PageContainer>
 }

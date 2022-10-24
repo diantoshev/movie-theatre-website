@@ -1,14 +1,16 @@
 import PageContainer from "../../components/PageContainer/PageContainer";
 import AccountInfoContainer from "./components/AccountInfoContainer/AccountInfoContainer";
 import AccountFavorites from "./components/AccountFavorites/AccountFavorites";
+import AnimatePage from "../../components/AnimatePages/AnimatePage";
 import "./AccountPage.scss";
+import FoodMenu from "../../components/FoodMenuPanel/FoodMenuPanel";
 export default function AccountPage(props) {
   return (
     <PageContainer>
-      <div className="account-page-container-design">
+      <AnimatePage>
         <AccountInfoContainer />
         <AccountFavorites />
-      </div>
+      </AnimatePage>
     </PageContainer>
   );
 }

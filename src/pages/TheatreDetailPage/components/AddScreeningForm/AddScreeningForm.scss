@@ -1,0 +1,27 @@
+.addScreeningForm {
+
+    .form-select {
+        background-color: #8f8989 !important;
+        border: 1px solid #660708;
+        color: #660708;
+    }
+
+    label {
+        color: #660708;
+        font-size: 1.2rem;
+        margin-top: 0.5rem;
+        font-weight: 500;
+        ;
+    }
+
+    .form-select:focus {
+        border-color: #660708;
+        color: #660708;
+        box-shadow: 0 0 0 0.25rem #66070840;
+    }
+
+    .form-select::placeholder {
+        color: #660708;
+
+    }
+}

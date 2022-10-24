@@ -1,0 +1,38 @@
+.selectTheatre_form {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    .selectTheatre_formSelect {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 1rem;
+        flex-direction: row;
+
+    }
+}
+
+@media (max-width: 767px) {
+
+    input,
+    select {
+        min-width: 350px;
+    }
+
+    .selectTheatre_formSelect,
+    .selectTheatre_form {
+        flex-wrap: wrap !important;
+        gap: 1rem;
+        flex-direction: column !important;
+    }
+
+    .selectTheatre_form {
+        width: 100% !important;
+    }
+
+    .chooseSeats_btn {
+        margin-top: 2rem;
+    }
+}

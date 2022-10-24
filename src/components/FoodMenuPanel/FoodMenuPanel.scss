@@ -1,0 +1,37 @@
+.foodItem_container {
+    position: relative;
+    display: block;
+    max-width: 250px;
+
+    img {
+        width: 180px;
+    }
+
+    .itemPrice {
+        position: absolute;
+        font-size: 5rem;
+        font-weight: 700;
+        top: 85px;
+        left: 125px;
+        text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.709);
+        letter-spacing: -5px;
+    }
+
+    .itemMenu {
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.709);
+        position: absolute;
+        font-size: 1.3rem;
+        font-weight: 700;
+        top: 0px;
+        left: 70px;
+
+    }
+}
+
+.foodMenu_container {
+
+    h2 {
+        text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.509);
+        font-size: 2.5rem;
+    }
+}
