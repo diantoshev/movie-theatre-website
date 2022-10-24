@@ -4,7 +4,7 @@ import AnimatePage from '../../components/AnimatePages/AnimatePage';
 import MovieFilter from '../../components/MovieFilter/MovieFilter';
 import MoviesContainer from '../../components/MoviesContainer/MoviesContainer';
 import Accordion from '../../components/Accordion/Accordion';
-import EditMovieForm from './components/EditMovieForm/EditMovieForm';
+import AddMovieForm from './components/AddMovieForm/AddMovieForm';
 
 let isAdmin = true;
 let isLogged = true;
@@ -14,7 +14,7 @@ export default function AllMoviesPage(props) {
         <AnimatePage>
             {(isAdmin && isLogged) ?
                 <Accordion panelTitle='Add Movie'>
-                    <EditMovieForm />
+                    <AddMovieForm />
                 </Accordion> : ''}
             <MovieFilter />
             <MoviesContainer />

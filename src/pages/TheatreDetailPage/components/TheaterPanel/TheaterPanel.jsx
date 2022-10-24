@@ -4,7 +4,7 @@ import TheaterScreenings from "../TheaterScreenings/TheaterScreening";
 
 export default function TheaterPanel() {
   return (
-    <GreyContainer className="theater-big-panel-design">
+    <GreyContainer className="p-4 container-lg">
       <TheaterScreenings />
     </GreyContainer>
   );

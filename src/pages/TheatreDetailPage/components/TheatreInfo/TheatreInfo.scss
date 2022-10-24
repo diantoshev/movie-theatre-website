@@ -1,0 +1,29 @@
+.theatreInfo {
+    width: 900px;
+
+    p {
+        font-size: 1.3rem;
+        text-shadow: 4px 2px 3px rgb(0 0 0);
+    }
+
+    h2 {
+        text-shadow: 4px 2px 3px rgb(0 0 0);
+    }
+
+    .brandLogo {
+        text-shadow: 4px 2px 3px rgb(0 0 0);
+        width: 200px;
+    }
+}
+
+.cinemaImage {
+    min-width: 300px !important;
+    filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.6));
+}
+
+
+@media (max-width: 767px) {
+    .theatreInfo>.row {
+        flex-direction: column;
+    }
+}

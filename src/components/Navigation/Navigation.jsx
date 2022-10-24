@@ -15,7 +15,7 @@ export default function Navigation() {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" className='bg-goldMid' />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="justify-content-between w-100 mx-0">
-                        <Link to='/theatres'><GoldButton>Program</GoldButton></Link>
+                        <Link to='/theatres/:id'><GoldButton>Program</GoldButton></Link>
                         <Link to='/theatres'><GoldButton>Theatres</GoldButton></Link>
                         <Link to='/movies'><GoldButton>Movies</GoldButton></Link>
                         <Link className='ms-auto' to='/login'><GoldButton className="nav-button">Login</GoldButton></Link>

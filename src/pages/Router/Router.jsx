@@ -3,7 +3,6 @@ import HomePage from "../HomePage/Home";
 import LoginPage from "../LoginPage/LoginPage";
 import RegisterPage from "../RegisterPage/RegisterPage";
 import AccountPage from "../AccountPage/AccountPage";
-import AdminEditProgramPage from '../AdminEditProgramPage/AdminEditProgramPage';
 import AdminTheatreEditPage from '../AdminTheatreEditPage/AdminTheatreEditPage';
 import AdminTheatresPage from '../AdminTheatresPage/AdminTheatresPage';
 import AllMoviesPage from '../AllMoviesPage/AllMovies';
@@ -27,7 +26,6 @@ export default function RouterLogic() {
                 <Route path="login" element={<LoginPage />} />
                 <Route path="register" element={<RegisterPage />} />
                 <Route path="account" element={<AccountPage />} />
-                <Route path="admin/edit-program" element={<AdminEditProgramPage />} />
                 <Route path="admin/theatres/:id" element={<AdminTheatreEditPage />} />
                 <Route path="admin/theatres" element={<AdminTheatresPage />} />
                 <Route path="movies" element={<AllMoviesPage />} />
