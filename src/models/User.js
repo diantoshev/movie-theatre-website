@@ -4,6 +4,7 @@ export default class User {
     this.password = password;
     this.fullName = fullName;
     this.isAdmin = false;
+    this.isLogged = false;
     this.orderHistory = [];
   }
 }
