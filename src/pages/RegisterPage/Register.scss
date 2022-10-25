@@ -9,3 +9,25 @@
 .login-link {
   color: white;
 }
+.hide {
+  display: none;
+}
+
+.valid {
+  color: rgb(15, 225, 15);
+  margin-left: 0.25rem;
+}
+
+.invalid {
+  color: rgb(243, 7, 7);
+  margin-left: 0.25rem;
+}
+
+.instructions > svg {
+  margin-right: 0.25rem;
+}
+
+.offscreen {
+  position: absolute;
+  left: -9999px;
+}

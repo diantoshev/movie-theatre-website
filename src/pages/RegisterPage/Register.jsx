@@ -1,20 +1,45 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import { useNavigate } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import "./Register.scss";
 import UserManager from "../../models/UserManager";
+import {
+  faCheck,
+  faTimes,
+  faInfoCircle,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Audio } from "react-loader-spinner";
+
+const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/; //at least one lowercase letter, one uppercase letter, one digit, one special character, 8 to 24 characters
 
 export default function Register() {
-  const [usernameValueReg, setUsernameReg] = useState("");
-  const [passwordValueReg, setPasswordReg] = useState("");
-  const [confirmedPasswordValue, setConfirmedPassword] = useState("");
-  const [firstLastNames, setFirstLastNames] = useState("");
+  const errRef = useRef();
 
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [validPassword, setValidPassword] = useState(false);
+  const [confirmedPassword, setConfirmedPassword] = useState("");
+  const [validMatch, setValidMatch] = useState(false);
+  const [fullName, setFullName] = useState("");
   const [error, setError] = useState("");
-  const navigate = useNavigate();
+  const [success, setSuccess] = useState(false);
   const [show, setShow] = useState(true);
+
+  useEffect(() => {
+    const result = PWD_REGEX.test(password);
+    setValidPassword(result);
+    const match = password === confirmedPassword;
+    setValidMatch(match);
+  }, [password, confirmedPassword]);
+
+  useEffect(() => {
+    setError("");
+  }, [username, password, confirmedPassword]);
+
+  const navigate = useNavigate();
 
   const userManager = new UserManager();
 
@@ -26,28 +51,23 @@ export default function Register() {
   const handleRegistrationSubmit = (e) => {
     e.preventDefault();
 
-    if (passwordValueReg !== confirmedPasswordValue) {
-      setError("The password has not been confirmed!");
-    } else {
-      const myInit = {
-        method: "POST",
-        body: JSON.stringify({
-          username: `${usernameValueReg}`,
-          password: `${passwordValueReg}`,
-        }),
-        headers: { "Content-Type": "application/json" },
-      };
-      fetch("https://itt-voting-api.herokuapp.com/users", myInit).then(
-        (resp) => {
-          if (!resp.ok) {
-            setError("There is an existing user with the same username!");
-          } else {
-            setError("");
-            navigate("/login");
-          }
-        }
-      );
-    }
+    const myInit = {
+      method: "POST",
+      body: JSON.stringify({
+        username: `${username}`,
+        password: `${password}`,
+      }),
+      headers: { "Content-Type": "application/json" },
+    };
+    fetch("https://itt-voting-api.herokuapp.com/users", myInit).then((resp) => {
+      if (!resp.ok) {
+        setError("There is an existing user with the same username!");
+      } else {
+        setError("");
+        setSuccess(true);
+        navigate("/login");
+      }
+    });
   };
 
   return (
@@ -57,7 +77,19 @@ export default function Register() {
           <Form onSubmit={handleRegistrationSubmit}>
             <Modal.Header closeButton>
               <Modal.Title>
-                <p>{error}</p>
+                {success ? (
+                  <Audio
+                    height="80"
+                    width="80"
+                    radius="9"
+                    color="green"
+                    ariaLabel="loading"
+                    wrapperStyle
+                    wrapperClass
+                  />
+                ) : (
+                  <p ref={errRef}>{error}</p>
+                )}
               </Modal.Title>
             </Modal.Header>
             <Modal.Body>
@@ -65,11 +97,20 @@ export default function Register() {
                 className="mb-3 text-style"
                 controlId="formRegUsername"
               >
-                <Form.Label>Enter your username:</Form.Label>
+                <Form.Label>
+                  *Enter your username:
+                  <span className={username ? "valid" : "hide"}>
+                    <FontAwesomeIcon icon={faCheck} />
+                  </span>
+                  <span className={!username ? "invalid" : "hide"}>
+                    <FontAwesomeIcon icon={faTimes} />
+                  </span>
+                </Form.Label>
                 <Form.Control
-                  value={usernameValueReg}
+                  value={username}
                   required
-                  onChange={(e) => setUsernameReg(e.target.value)}
+                  autoComplete="off"
+                  onChange={(e) => setUsername(e.target.value)}
                   type="text"
                   placeholder="Username..."
                 />
@@ -78,39 +119,101 @@ export default function Register() {
                 className="mb-3 text-style"
                 controlId="formRegPassword"
               >
-                <Form.Label>Enter your password:</Form.Label>
-                {/**Ще зададем ли ограничение за паролите - например да има знак, цифра и буква? */}
+                <Form.Label>
+                  *Enter your password:
+                  <span className={validPassword ? "valid" : "hide"}>
+                    <FontAwesomeIcon icon={faCheck} />
+                  </span>
+                  <span className={!validPassword ? "invalid" : "hide"}>
+                    <FontAwesomeIcon icon={faTimes} />
+                  </span>
+                </Form.Label>
                 <Form.Control
-                  value={passwordValueReg}
+                  value={password}
                   required
-                  onChange={(e) => setPasswordReg(e.target.value)}
+                  aria-invalid={validPassword ? "false" : "true"}
+                  aria-describedby="pwdnote"
+                  onChange={(e) => setPassword(e.target.value)}
                   type="password"
                   placeholder="Password..."
                 />
+                <p
+                  id="pwdnote"
+                  className={!validPassword ? "instructions" : "offscreen"}
+                >
+                  <FontAwesomeIcon icon={faInfoCircle} />
+                  8 to 24 characters.
+                  <br />
+                  Must include: <br />
+                  uppercase and lowercase letters,
+                  <br />
+                  a number and a special character.
+                  <br />
+                  Allowed special characters:{" "}
+                  <span aria-label="exclamation mark">!</span>{" "}
+                  <span aria-label="at symbol">@</span>{" "}
+                  <span aria-label="hashtag">#</span>{" "}
+                  <span aria-label="dollar sign">$</span>{" "}
+                  <span aria-label="percent">%</span>
+                </p>
               </Form.Group>
               <Form.Group
                 className="mb-3 text-style"
                 controlId="formRegConfirmedPassword"
               >
-                <Form.Label>Confirm your password:</Form.Label>
+                <Form.Label>
+                  *Confirm your password:
+                  <span
+                    className={
+                      validMatch && confirmedPassword ? "valid" : "hide"
+                    }
+                  >
+                    <FontAwesomeIcon icon={faCheck} />
+                  </span>
+                  <span
+                    className={
+                      !validMatch || !confirmedPassword ? "invalid" : "hide"
+                    }
+                  >
+                    <FontAwesomeIcon icon={faTimes} />
+                  </span>
+                </Form.Label>
                 <Form.Control
-                  value={confirmedPasswordValue}
+                  value={confirmedPassword}
                   required
+                  aria-invalid={validMatch ? "false" : "true"}
+                  aria-describedby="confirmnote"
                   onChange={(e) => setConfirmedPassword(e.target.value)}
                   type="password"
                   placeholder="Confirm password..."
                 />
+                <p
+                  id="confirmnote"
+                  className={!validMatch ? "instructions" : "offscreen"}
+                >
+                  <FontAwesomeIcon icon={faInfoCircle} />
+                  Must match the first password input field!
+                </p>
               </Form.Group>
               <Form.Group
                 className="mb-3 text-style"
                 controlId="formFirstLastNames"
               >
-                <Form.Label>First and Last name:</Form.Label>
+                <Form.Label>
+                  *Full name:
+                  <span className={fullName ? "valid" : "hide"}>
+                    <FontAwesomeIcon icon={faCheck} />
+                  </span>
+                  <span className={!fullName ? "invalid" : "hide"}>
+                    <FontAwesomeIcon icon={faTimes} />
+                  </span>
+                </Form.Label>
                 <Form.Control
-                  value={firstLastNames}
+                  value={fullName}
                   required
-                  onChange={(e) => setFirstLastNames(e.target.value)}
+                  onChange={(e) => setFullName(e.target.value)}
                   type="text"
+                  autoComplete="off"
                   placeholder="Names..."
                 />
               </Form.Group>
