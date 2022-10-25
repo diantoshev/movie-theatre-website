@@ -22,7 +22,7 @@ export const loginUser = createAsyncThunk(
         "Content-Type": "application/json",
       },
     }).then((res) => {
-      newUserManager.login(username);
+      // newUserManager.login(username);
       return res.json();
     });
   }
@@ -39,16 +39,16 @@ export const activeUserSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(loginUser.fulfilled, (state, { payload }) => {
-      if (payload.sessionId && newUserManager.isLoggedMovieSpotUser) {
+      if (payload.sessionId) {
         state.sessionId = payload.sessionId;
         state.isLogged = true;
         state.userLoading = false;
         state.errorLogin = false;
-        state.isAdmin = newUserManager.isLoggedMovieSpotUser.isAdmin;
-        localStorage.setItem(
-          "isLoggedMovieSpotUser",
-          JSON.stringify(newUserManager.isLoggedMovieSpotUser)
-        );
+        // state.isAdmin = newUserManager.isLoggedMovieSpotUser.isAdmin;
+        // localStorage.setItem(
+        //   "isLoggedMovieSpotUser",
+        //   JSON.stringify(newUserManager.isLoggedMovieSpotUser)
+        // );
       } else {
         state.errorLogin = payload.message;
         state.userLoading = false;
