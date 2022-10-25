@@ -4,11 +4,17 @@ import Form from "react-bootstrap/Form";
 import "./Login.scss";
 import { useNavigate } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
-
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser } from "../../store/ActiveUserSlice";
+// import changeUserData from "../../store/ActiveUserSlice";
 export default function Login() {
-  const [usernameValue, setUsername] = useState("");
-  const [passwordValue, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const user = useSelector((state) => state.activeUser);
+  const dispatch = useDispatch();
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  // const [error, setError] = useState("");
+
   const navigate = useNavigate();
   const [show, setShow] = useState(true);
 
@@ -17,50 +23,25 @@ export default function Login() {
     navigate("/home");
   };
 
-  const handleLoginSubmit = (e) => {
+  const handleDispatch = (e) => {
     e.preventDefault();
-
-    if (usernameValue && passwordValue) {
-      const myInit = {
-        method: "POST",
-        body: JSON.stringify({
-          username: `${usernameValue}`, 
-          password: `${passwordValue}`,
-        }),
-        headers: { "Content-Type": "application/json" },
-      };
-
-      fetch("https://itt-voting-api.herokuapp.com/login", myInit).then(
-        (resp) => {
-          if (resp.ok) {
-            const data = resp.json();
-            const checkboxRemember = document.getElementById("loginCheckbox");
-            if (checkboxRemember.checked) {
-              data.then((obj) => {
-                localStorage.setItem("moviespotUser", obj.sessionId);
-              });
-            }
-            setError("");
-            setPassword("");
-            setUsername("");
-            navigate("/home");
-          } else {
-            setError("Wrong credentials!");
-          }
-        }
-      );
-    } else {
-      setError("Please, fill in all of the required fields!");
-    }
+    dispatch(loginUser({ username, password }));
   };
+
   return (
     <>
       <Modal size="sm" show={show} onHide={handleClose}>
         <div className="h-25 fst-italic login-style">
-          <Form onSubmit={handleLoginSubmit}>
+          <Form>
             <Modal.Header closeButton>
               <Modal.Title>
-                <p>{error}</p>
+                {(username && password && user.userLoading && (
+                  <p>Loading...</p>
+                )) ||
+                  (username && password && user.errorLogin && (
+                    <p>Wrong credentials...</p>
+                  ))}
+                {/**Питам Слави за грешката */}
               </Modal.Title>
             </Modal.Header>
             <Modal.Body>
@@ -70,7 +51,8 @@ export default function Login() {
               >
                 <Form.Label>Enter your username:</Form.Label>
                 <Form.Control
-                  value={usernameValue}
+                  value={username}
+                  required
                   onChange={(e) => setUsername(e.target.value)}
                   type="text"
                   placeholder="Username..."
@@ -83,7 +65,8 @@ export default function Login() {
               >
                 <Form.Label>Enter your password:</Form.Label>
                 <Form.Control
-                  value={passwordValue}
+                  value={password}
+                  required
                   onChange={(e) => setPassword(e.target.value)}
                   type="password"
                   placeholder="Password..."
@@ -101,6 +84,7 @@ export default function Login() {
                 <button
                   className="btn btn-outline-goldLight rounded-2 px-4"
                   type="submit"
+                  onClick={handleDispatch}
                 >
                   Log In
                 </button>

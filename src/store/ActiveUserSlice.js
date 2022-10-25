@@ -1,18 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-
-export const loginUser = createAsyncThunk(
-  "activeUser/login",
-  ({ username, password }) => {
-    debugger;
-    return fetch(`https://itt-voting-api.herokuapp.com/login`, {
-      method: "POST",
-      body: JSON.stringify({ username, password }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then((res) => res.json());
-  }
-);
+import UserManager from "../models/UserManager";
 
 const initialState = {
   username: "",
@@ -22,7 +9,25 @@ const initialState = {
   isLogged: false,
   sessionId: "",
   userLoading: false,
+  errorLogin: false,
 };
+const newUserManager = new UserManager();
+export const loginUser = createAsyncThunk(
+  "activeUser/login",
+  ({ username, password }) => {
+    return fetch(`https://itt-voting-api.herokuapp.com/login`, {
+      method: "POST",
+      body: JSON.stringify({ username, password }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((res) => {
+      newUserManager.login(username);
+      return res.json();
+    });
+  }
+);
+
 export const activeUserSlice = createSlice({
   name: "activeUser",
   initialState,
@@ -34,11 +39,22 @@ export const activeUserSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(loginUser.fulfilled, (state, { payload }) => {
-      state.sessionId = payload.sessionId;
-      state.isLogged = state.sessionId ? true : false;
-      state.userLoading = false;
+      if (payload.sessionId && newUserManager.isLoggedMovieSpotUser) {
+        state.sessionId = payload.sessionId;
+        state.isLogged = true;
+        state.userLoading = false;
+        state.errorLogin = false;
+        state.isAdmin = newUserManager.isLoggedMovieSpotUser.isAdmin;
+        localStorage.setItem(
+          "isLoggedMovieSpotUser",
+          JSON.stringify(newUserManager.isLoggedMovieSpotUser)
+        );
+      } else {
+        state.errorLogin = payload.message;
+        state.userLoading = false;
+      }
     });
-    builder.addCase(loginUser.rejected, (state, action) => {
+    builder.addCase(loginUser.rejected, (state, { payload }) => {
       state.userLoading = false;
     });
     builder.addCase(loginUser.pending, (state, action) => {
