@@ -5,14 +5,14 @@ import MovieFilter from '../../components/MovieFilter/MovieFilter';
 import MoviesContainer from '../../components/MoviesContainer/MoviesContainer';
 import Accordion from '../../components/Accordion/Accordion';
 import AddMovieForm from './components/AddMovieForm/AddMovieForm';
+import { useSelector } from 'react-redux';
 
-let isAdmin = true;
-let isLogged = true;
 
 export default function AllMoviesPage(props) {
+    const activeUser = useSelector(state => state.activeUser);
     return <PageContainer>
         <AnimatePage>
-            {(isAdmin && isLogged) ?
+            {(activeUser.isAdmin && activeUser.isLogged) ?
                 <Accordion panelTitle='Add Movie'>
                     <AddMovieForm />
                 </Accordion> : ''}
