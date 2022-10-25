@@ -22,7 +22,7 @@ export const loginUser = createAsyncThunk(
         "Content-Type": "application/json",
       },
     }).then((res) => {
-      // newUserManager.login(username);
+      newUserManager.loginAdmin(username);
       return res.json();
     });
   }
@@ -44,7 +44,8 @@ export const activeUserSlice = createSlice({
         state.isLogged = true;
         state.userLoading = false;
         state.errorLogin = false;
-        // state.isAdmin = newUserManager.isLoggedMovieSpotUser.isAdmin;
+        state.isAdmin = newUserManager.isAdminUser;
+
         // localStorage.setItem(
         //   "isLoggedMovieSpotUser",
         //   JSON.stringify(newUserManager.isLoggedMovieSpotUser)
