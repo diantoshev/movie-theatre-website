@@ -1,6 +1,5 @@
 import UserManager from "./UserManager";
 
-
 export default class AdminManager extends UserManager {
   constructor() {
     super();

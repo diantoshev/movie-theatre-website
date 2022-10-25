@@ -5,7 +5,6 @@ import Navigation from './components/Navigation/Navigation';
 import RouterLogic from "./pages/Router/Router";
 
 function App() {
-
   return (
     <div className="App">
       <Navigation />

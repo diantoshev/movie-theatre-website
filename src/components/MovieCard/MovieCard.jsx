@@ -5,15 +5,17 @@ import ImageOverlay from '../ImageOverlay/ImageOverlay';
 import { IoTicketOutline } from 'react-icons/io5';
 import { MdOutlineFavoriteBorder } from 'react-icons/md';
 import { RiCloseCircleLine } from 'react-icons/ri';
+import { useSelector } from 'react-redux';
 
-let isAdmin = true;
-let isLogged = false;
+
 export default function MovieCard(props) {
+    const activeUser = useSelector(state => state.activeUser);
+
     return (
         <GreyContainer className='movieCard__container bg-dark rounded-3'>
             <Card className='bg-goldDark movieCard'>
                 <Card.Body className='bg-greyDark movieCard__body'>
-                    {!(isAdmin && isLogged) ?
+                    {!(activeUser.isAdmin && activeUser.isLogged) ?
                         <ImageOverlay
                             overlayBtnNavText='Buy Tickets'
                             overlayBtnNavIcon={<IoTicketOutline />}

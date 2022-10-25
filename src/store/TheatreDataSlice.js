@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
+import TheatreManager from "../models/TheatreManager";
 
+const theatreManager = new TheatreManager();
+// const allTheatres = theatreManager.allTheatres;
 
-
-const initialState = {
-    theatres: [],
-}
+const initialState = theatreManager.allTheatres;
 
 
 export const theatresSlice = createSlice({

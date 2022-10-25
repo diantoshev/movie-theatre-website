@@ -3,8 +3,10 @@ import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
 import './Navigation.scss';
 import GoldButton from '../Buttons/GoldButton';
+import { useSelector } from 'react-redux';
 
 export default function Navigation() {
+    const activeUser = useSelector(state => state.activeUser);
 
     return (
         <Navbar bg="transparent" expand="lg" className='nav w-100' fixed='top'>
@@ -18,7 +20,9 @@ export default function Navigation() {
                         <Link to='/theatres/:id'><GoldButton>Program</GoldButton></Link>
                         <Link to='/theatres'><GoldButton>Theatres</GoldButton></Link>
                         <Link to='/movies'><GoldButton>Movies</GoldButton></Link>
-                        <Link className='ms-auto' to='/login'><GoldButton className="nav-button">Login</GoldButton></Link>
+                        {activeUser.isLogged ?
+                            <Link className='ms-auto' to='/account'><GoldButton className="nav-button">Account</GoldButton></Link> :
+                            <Link className='ms-auto' to='/login'><GoldButton className="nav-button">Login</GoldButton></Link>}
                     </Nav>
                 </Navbar.Collapse >
             </div >
