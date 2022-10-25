@@ -5,16 +5,17 @@ import AnimatePage from "../../components/AnimatePages/AnimatePage";
 import SimpleMap from "./components/TheatresMap/TheatresMap";
 import Accordion from '../../components/Accordion/Accordion';
 import AddTheatreForm from "./components/AddTheatreForm/AddTheatreForm";
-
-let isAdmin = true;
-let isLogged = true;
+import { useSelector } from "react-redux";
 
 
 export default function AllTheatresPage(props) {
+
+  const activeUser = useSelector(state => state.activeUser);
+
   return (
     <PageContainer>
       <AnimatePage>
-        {(isAdmin && isLogged) ?
+        {(activeUser.isAdmin && activeUser.isLogged) ?
           <Accordion panelTitle='Add Theatre' className='mb-5'>
             <AddTheatreForm />
           </Accordion> : ''}
