@@ -3,7 +3,7 @@ import AccountInfoContainer from "./components/AccountInfoContainer/AccountInfoC
 import AccountFavorites from "./components/AccountFavorites/AccountFavorites";
 import AnimatePage from "../../components/AnimatePages/AnimatePage";
 import "./AccountPage.scss";
-import FoodMenu from "../../components/FoodMenuPanel/FoodMenuPanel";
+
 export default function AccountPage(props) {
   return (
     <PageContainer>

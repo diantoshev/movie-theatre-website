@@ -6,20 +6,20 @@ import ImageOverlay from '../ImageOverlay/ImageOverlay';
 import { BiMoviePlay } from 'react-icons/bi';
 import { HiOutlineWrench } from 'react-icons/hi2';
 import { RiCloseCircleLine } from 'react-icons/ri';
-let isAdmin = true;
-let isLogged = true;
+let isAdmin = false;
+let isLogged = false;
 
 export default function TheaterCard(props) {
   return (
     <Tilt className="Tilt" options={{ max: 30, scale: 1.1 }} >
-      <GreyContainer className='p-4 rounded-3'>
+      <GreyContainer className='p-4 rounded-3 card-container'>
         <Card className='bg-greyDark theatreCard'>
           {!(isAdmin && isLogged) ?
             <ImageOverlay
               overlayBtnNavText='Check Program'
               overlayBtnNavLink='/theatres/:id'
               overlayBtnNavIcon={<BiMoviePlay />}>
-              <Card.Img variant="top" src={require("./assets/cinema3.jpg")} />
+              <Card.Img variant="top" src={props.img} />
             </ImageOverlay> :
             <ImageOverlay
               overlayBtnNavText='Edit Theatre'
@@ -27,17 +27,17 @@ export default function TheaterCard(props) {
               overlayBtnNavIcon={<HiOutlineWrench />}
               overlayBtnActionText='Remove Theatre'
               overlayBtnActionIcon={<RiCloseCircleLine />}>
-              <Card.Img variant="top" src={require("./assets/cinema3.jpg")} />
+              <Card.Img variant="top" src={props.img} />
             </ImageOverlay>
           }
 
           <Card.Body>
-            <Card.Title className='border-bottom border-goldMid mb-3 theatreTitle'>{props.theatreTitle}</Card.Title>
+            <Card.Title className='border-bottom border-goldMid mb-3 theatreTitle'>{props.name}</Card.Title>
 
             <Card.Text className="text-goldMid">
-              <p><strong>Address: </strong>{props.theatreAddress}</p>
-              <p><strong>Phone: </strong>{props.theatrePhone}</p>
-              <p><strong>Working Hours: </strong>{props.theatreHours}</p>
+              <p><strong>Address: </strong>{props.address}</p>
+              <p><strong>Phone: </strong>{props.contacts}</p>
+              <p><strong>Working Hours: </strong>{props.workHours}</p>
             </Card.Text>
           </Card.Body>
         </Card>

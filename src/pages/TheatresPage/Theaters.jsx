@@ -8,6 +8,8 @@ import AddTheatreForm from "./components/AddTheatreForm/AddTheatreForm";
 
 let isAdmin = true;
 let isLogged = true;
+
+
 export default function AllTheatresPage(props) {
   return (
     <PageContainer>
@@ -17,7 +19,7 @@ export default function AllTheatresPage(props) {
             <AddTheatreForm />
           </Accordion> : ''}
         <TheatresContainer className="container-sm mt-5" />
-        <SimpleMap />
+        {/* <SimpleMap /> */}
       </AnimatePage>
     </PageContainer>
   );
