@@ -149,7 +149,9 @@ export default function Register() {
                 </button>
               </Form.Group>
               <Form.Group className="text-style" controlId="linkRegLogin">
-                <Link to="/login">Have an account? Log in &raquo;</Link>
+                <Link to="/login" className="login-link">
+                  Have an account? Log in &raquo;
+                </Link>
               </Form.Group>
               <br />
             </Modal.Body>

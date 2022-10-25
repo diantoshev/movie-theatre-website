@@ -6,14 +6,13 @@ import { useNavigate } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../store/ActiveUserSlice";
-// import changeUserData from "../../store/ActiveUserSlice";
+
 export default function Login() {
   const user = useSelector((state) => state.activeUser);
   const dispatch = useDispatch();
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  // const [error, setError] = useState("");
 
   const navigate = useNavigate();
   const [show, setShow] = useState(true);
@@ -23,11 +22,18 @@ export default function Login() {
     navigate("/home");
   };
 
+  const redirect = () => {
+    navigate("/home");
+  };
+
   const handleDispatch = (e) => {
     e.preventDefault();
     dispatch(loginUser({ username, password }));
   };
 
+  if (user.isLogged) {
+    redirect();
+  }
   return (
     <>
       <Modal size="sm" show={show} onHide={handleClose}>
