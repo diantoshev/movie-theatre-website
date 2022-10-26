@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import "./Login.scss";
@@ -6,47 +6,63 @@ import { useNavigate } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../store/ActiveUserSlice";
+import clearError from "../../store/ActiveUserSlice";
 
 export default function Login() {
-  const user = useSelector((state) => state.activeUser);
+  const user = useSelector((state) => state.activeUser.isLogged);
   const dispatch = useDispatch();
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const navigate = useNavigate();
+  // const [logged, setLogged] = useState(false);
+
+  const navigation = useNavigate();
   const [show, setShow] = useState(true);
 
   const handleClose = () => {
     setShow(false);
-    navigate("/home");
   };
 
-  const redirect = () => {
-    navigate("/home");
-  };
+  useEffect(() => {
+    if (!show) {
+      // navigation("/home");
+    }
+  }, [show, navigation]);
+  useEffect(() => {
+    if (user) {
+      navigation("/home");
+    }
+  }, [user, navigation]);
 
-  const handleDispatch = (e) => {
+  // useEffect(() => {
+  //   if (username && password) {
+  //     setError(user.errorLogin);
+  //   } else {
+  //     setError("");
+  //   }
+  // }, [user.errorLogin, username, password]);
+
+  const validateForm = () => {};
+
+  const handleLogin = (e) => {
     e.preventDefault();
-    dispatch(loginUser({ username, password }));
+    if (username && password) {
+      dispatch(loginUser({ username, password }));
+    }
   };
 
-  if (user.isLogged) {
-    redirect();
-  }
   return (
     <>
       <Modal size="sm" show={show} onHide={handleClose}>
         <div className="h-25 fst-italic login-style">
-          <Form>
+          <Form onInput={validateForm}>
             <Modal.Header closeButton>
               <Modal.Title>
-                {(username && password && user.userLoading && (
+                {/* {(username && password && user.userLoading && (
                   <p>Loading...</p>
                 )) ||
-                  (username && password && user.errorLogin && (
-                    <p>Wrong credentials...</p>
-                  ))}
+                  (username && password && user.errorLogin && <p></p>)} */}
                 {/**Питам Слави за грешката */}
               </Modal.Title>
             </Modal.Header>
@@ -90,7 +106,7 @@ export default function Login() {
                 <button
                   className="btn btn-outline-goldLight rounded-2 px-4"
                   type="submit"
-                  onClick={handleDispatch}
+                  onClick={handleLogin}
                 >
                   Log In
                 </button>
