@@ -10,9 +10,7 @@ function TheatreInfo(props) {
         <GreyContainer className='container-sm p-5 mb-4 theatreInfo rounded-3'>
             <div className="row d-flex justify-content-center w-100">
                 <div className="col d-flex justify-content-center align-items-center">
-                    <Tilt options={{ max: 25, scale: 1.1 }}>
-                        <img src={cinema1} alt='Cinema' className="cinemaImage rounded-3 mb-3 w-100" />
-                    </Tilt>
+                    <img src={cinema1} alt='Cinema' className="cinemaImage rounded-3 mb-3 w-100" />
                 </div>
                 <div className="col d-flex justify-content-center align-items-center flex-column">
                     <img src={logo} alt='MovieSpot logo' className="brandLogo" />

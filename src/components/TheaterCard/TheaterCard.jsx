@@ -4,7 +4,7 @@ import Tilt from 'react-tilt';
 import GreyContainer from '../GreyContainer/GeryContainer';
 import ImageOverlay from '../ImageOverlay/ImageOverlay';
 import { BiMoviePlay } from 'react-icons/bi';
-import { HiOutlineWrench } from 'react-icons/hi2';
+import { BiWrench } from 'react-icons/bi';
 import { RiCloseCircleLine } from 'react-icons/ri';
 import { useSelector } from "react-redux";
 
@@ -16,7 +16,7 @@ export default function TheaterCard(props) {
         <Card className='bg-greyDark theatreCard' id={props.id}>
           {!(activeUser.isAdmin && activeUser.isLogged) ?
             <ImageOverlay
-              key={props.key}
+              id={props.id}
               overlayBtnNavText='Check Program'
               overlayBtnNavLink={`/theatres/${props.id}`}
               overlayBtnNavIcon={<BiMoviePlay />}>
@@ -25,7 +25,7 @@ export default function TheaterCard(props) {
             <ImageOverlay
               overlayBtnNavText='Edit Theatre'
               overlayBtnNavLink={`/theatres/${props.id}`}
-              overlayBtnNavIcon={<HiOutlineWrench />}
+              overlayBtnNavIcon={<BiWrench />}
               overlayBtnActionText='Remove Theatre'
               overlayBtnActionIcon={<RiCloseCircleLine />}>
               <Card.Img variant="top" src={props.img} />
@@ -35,7 +35,7 @@ export default function TheaterCard(props) {
           <Card.Body>
             <Card.Title className='border-bottom border-goldMid mb-3 theatreTitle'>{props.name}</Card.Title>
 
-            <Card.Text className="text-goldMid">
+            <Card.Text as='div' className="text-goldMid">
               <p><strong>Address: </strong>{props.address}</p>
               <p><strong>Phone: </strong>{props.contacts}</p>
               <p><strong>Working Hours: </strong>{props.workHours}</p>
@@ -43,7 +43,7 @@ export default function TheaterCard(props) {
           </Card.Body>
         </Card>
       </GreyContainer>
-    </Tilt>
+    </Tilt >
 
   );
 }

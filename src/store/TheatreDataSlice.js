@@ -4,7 +4,7 @@ import TheatreManager from "../models/TheatreManager";
 const theatreManager = new TheatreManager();
 // const allTheatres = theatreManager.allTheatres;
 
-const initialState = theatreManager.allTheatres;
+const initialState = JSON.stringify(theatreManager.allTheatres);
 
 
 export const theatresSlice = createSlice({

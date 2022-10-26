@@ -12,29 +12,39 @@ export default function MovieCard(props) {
     const activeUser = useSelector(state => state.activeUser);
 
     return (
-        <GreyContainer className='movieCard__container bg-dark rounded-3'>
-            <Card className='bg-goldDark movieCard'>
+        <GreyContainer className='movieCard__container bg-dark rounded-3' id={props.id}>
+            <Card className='movieCard d-flex flex-column'>
                 <Card.Body className='bg-greyDark movieCard__body'>
-                    {!(activeUser.isAdmin && activeUser.isLogged) ?
-                        <ImageOverlay
-                            overlayBtnNavText='Buy Tickets'
-                            overlayBtnNavIcon={<IoTicketOutline />}
-                            overlayBtnNavLink='/movies/:id'
-                            overlayBtnActionText='Add to favorites'
-                            overlayBtnActionIcon={<MdOutlineFavoriteBorder />}
-                        >
-                            <Card.Img className='movieCard-img' variant="top" src="https://m.media-amazon.com/images/M/MV5BZTIyNzc3NzMtNGE5YS00Yjg5LTk5MDMtOTUxMzk1ZTBkOTgwXkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_SX300.jpg" />
-                        </ImageOverlay> :
-                        <ImageOverlay
-                            overlayBtnActionText='Remove movie'
-                            overlayBtnActionIcon={<RiCloseCircleLine />}
-                        >
-                            <Card.Img className='movieCard-img' variant="top" src="https://m.media-amazon.com/images/M/MV5BZTIyNzc3NzMtNGE5YS00Yjg5LTk5MDMtOTUxMzk1ZTBkOTgwXkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_SX300.jpg" />
-                        </ImageOverlay>
-                    }
-                    <Card.Text className='text-goldMid rounded-2 p-2 m-3 movieTitle'>
-                        DC Leage of Super Pets
-                    </Card.Text>
+                    <div className='w-100 h-auto'>
+                        {!(activeUser.isAdmin && activeUser.isLogged) ?
+                            <ImageOverlay
+                                id={props.id}
+                                overlayBtnNavText='Buy Tickets'
+                                overlayBtnNavIcon={<IoTicketOutline />}
+                                overlayBtnNavLink={`/movies/${props.id}`}
+                                overlayBtnActionText='Add to favorites'
+                                overlayBtnActionIcon={<MdOutlineFavoriteBorder />}
+                            >
+                                <Card.Img className='movieCard-img' variant="top" src={props.poster} />
+                            </ImageOverlay> :
+                            <ImageOverlay
+                                overlayBtnActionText='Remove movie'
+                                overlayBtnActionIcon={<RiCloseCircleLine />}
+                            >
+                                <Card.Img className='movieCard-img' variant="top" src={props.poster} />
+                            </ImageOverlay>
+                        }
+                    </div>
+                    <div className='h-100 w-100 d-flex flex-column justify-content-center flex-nowrap'>
+                        <div className='pt-3 px-2 h-50 d-flex justify-content-center align-items-center'>
+                            <Card.Text className='text-goldMid d-flex flex-wrap movieTitle'>
+                                {props.title}
+                            </Card.Text>
+                        </div>
+                        <div className='h-50 d-flex justify-content-center align-items-center'>
+                            <Card.Text>{props.country} ({props.year})</Card.Text>
+                        </div>
+                    </div>
                 </Card.Body>
             </Card>
         </GreyContainer >

@@ -5,19 +5,22 @@
     }
 
     img {
-        max-height: 300px;
+        max-height: 400px;
         box-shadow: 4px 2px 3px rgb(0 0 0);
     }
 
+    h2 {
+        text-shadow: 2px 2px 3px rgb(0 0 0);
+    }
 
 }
 
 .movieContent {
     p {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
         vertical-align: center;
-        margin-bottom: 1.5rem;
         text-align: left;
+        text-shadow: 2px 2px 3px rgb(0 0 0);
     }
 }
 
@@ -32,7 +35,6 @@
         p {
             font-size: 1rem;
             vertical-align: center;
-            margin-bottom: 0.5rem;
             text-align: center;
         }
     }

@@ -9,7 +9,7 @@ export default function TheatresContainer() {
 
   return (
     <div className="my-4 theatres-container-design container-sm d-flex flex-wrap justify-content-evenly gap-5">
-      {allTheatres.map(theatre => <TheaterCard
+      {JSON.parse(allTheatres).map(theatre => <TheaterCard
         key={theatre.id}
         id={theatre.id}
         name={theatre.name}

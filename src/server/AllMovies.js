@@ -1,11 +1,11 @@
-const allMovies =
-    [
+export const MOVIES_DATA =
+    JSON.stringify([
         {
             "Title": "Black Panther: Wakanda Forever",
             "Year": "2022",
             "Rated": "N/A",
             "Released": "11 Nov 2022",
-            "Runtime": "N/A",
+            "Runtime": "162 min",
             "Genre": "Action, Adventure, Drama",
             "Director": "Ryan Coogler",
             "Writer": "Ryan Coogler, Joe Robert Cole",
@@ -37,7 +37,7 @@ const allMovies =
             "Director": "Parker Finn",
             "Writer": "Parker Finn",
             "Actors": "Sosie Bacon, Jessie T. Usher, Kyle Gallner",
-            "Plot": "After witnessing a bizarre, traumatic incident involving a patient, Dr. Rose Cotter starts experiencing frightening occurrences that she can't explain. Rose must confront her troubling past in order to survive and escape her horri...",
+            "Plot": "After witnessing a bizarre, traumatic incident involving a patient, Dr. Rose Cotter starts experiencing frightening occurrences that she can't explain. Rose must confront her troubling past in order to survive and escape her horrific tormentor.",
             "Language": "English",
             "Country": "United States",
             "Awards": "N/A",
@@ -175,6 +175,34 @@ const allMovies =
             "Response": "True"
         },
         {
+            "Title": "Lyle, Lyle, Crocodile",
+            "Year": "2022",
+            "Rated": "PG",
+            "Released": "07 Oct 2022",
+            "Runtime": "106 min",
+            "Genre": "Animation, Adventure, Comedy",
+            "Director": "Josh Gordon, Will Speck",
+            "Writer": "Will Davies, Bernard Waber",
+            "Actors": "Javier Bardem, Constance Wu, Scoot McNairy",
+            "Plot": "Follows the title reptile who lives in a house on East 88th Street in New York City. Lyle enjoys helping the Primm family with everyday chores and playing with the neighborhood kids but one neighbor insists that Lyle belongs in a zoo. Mr. Grumps and his cat, Loretta, do not like crocodiles, and Lyle tries to prove that he is not as bad as others might first think.",
+            "Language": "English",
+            "Country": "United States",
+            "Awards": "N/A",
+            "Poster": "https://m.media-amazon.com/images/M/MV5BODVhODBjYjAtOGUwZS00ZDFlLWFhZTEtZTM5OGNiNDAxYTFkXkEyXkFqcGdeQXVyMDA4NzMyOA@@._V1_SX300.jpg",
+            "Ratings": [
+            ],
+            "Metascore": "N/A",
+            "imdbRating": "N/A",
+            "imdbVotes": "N/A",
+            "imdbID": "tt14668630",
+            "Type": "movie",
+            "DVD": "N/A",
+            "BoxOffice": "N/A",
+            "Production": "N/A",
+            "Website": "N/A",
+            "Response": "True"
+        },
+        {
             "Title": "Halloween Ends",
             "Year": "2022",
             "Rated": "R",
@@ -260,7 +288,7 @@ const allMovies =
             "Director": "Kyle Balda, Brad Ableson, Jonathan del Val",
             "Writer": "Matthew Fogel, Brian Lynch",
             "Actors": "Steve Carell, Pierre Coffin, Alan Arkin",
-            "Plot": "In the heart of the 1970s, amidst a flurry of feathered hair and flared jeans, Gru (Steve Carell) is growing up in the suburbs. A fanboy of a supervillain supergroup known as the Vicious 6, Gru hatches a plan to become evil enough to join them. Luckily, he gets some mayhem-making back-up from his loyal followers, the Minions. Together, Kevin, Stuart, Bob, and Otto - a new Minion sporting braces and a desperate need to please - deploy their skills as they and Gru build their first lair, experiment with their first weapons, and pull off their first missions. When the Vicious 6 oust their leader, legendary fighter Wild Knuckles (Alan Arkin), Gru interviews to become their newest member. It doesn't go well (to say the least), and only gets worse after Gru outsmarts them and suddenly finds himself the mortal enemy of the apex of evil. On the run, Gru will turn to an unlikely source for guidance, Wild Knuckles, and discover that even bad guys need a little help from their friends.",
+            "Plot": "In the heart of the 1970s, amidst a flurry of feathered hair and flared jeans, Gru (Steve Carell) is growing up in the suburbs. A fanboy of a supervillain supergroup known as the Vicious 6, Gru hatches a plan to become evil enough to join them. Luckily, he gets some mayhem-making back-up from his loyal followers, the Minions. Together, Kevin, Stuart, Bob, and Otto - a new Minion sporting braces and a desperate need to please - deploy their skills as they and Gru build their first lair, experiment with their first weapons, and pull off their first missions. When the Vicious 6 oust their leader, legendary fighter Wild Knuckles (Alan Arkin), Gru interviews to become their newest member.",
             "Language": "English, Vietnamese",
             "Country": "United States",
             "Awards": "1 nomination",
@@ -558,7 +586,7 @@ const allMovies =
             "Year": "2022",
             "Rated": "N/A",
             "Released": "16 Dec 2022",
-            "Runtime": "N/A",
+            "Runtime": "145 min",
             "Genre": "Action, Adventure, Fantasy",
             "Director": "James Cameron",
             "Writer": "James Cameron, Josh Friedman",
@@ -736,6 +764,4 @@ const allMovies =
             "Website": "N/A",
             "Response": "True"
         },
-    ]
-
-console.log(allMovies.length)
+    ]);

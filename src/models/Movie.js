@@ -1,5 +1,5 @@
 export default class Movie {
-  constructor(id, title, poster, genre, cast, year, plot, director, country) {
+  constructor(id, title, poster, genre, cast, year, plot, director, country, runtime) {
     this.id = id;
     this.title = title;
     this.poster = poster;
@@ -9,5 +9,6 @@ export default class Movie {
     this.plot = plot;
     this.director = director;
     this.country = country;
+    this.runtime = runtime;
   }
 }
