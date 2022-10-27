@@ -6,15 +6,18 @@ import { useNavigate } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../store/ActiveUserSlice";
+import UserManager from "../../models/UserManager";
 
 export default function Login() {
   const user = useSelector((state) => state.activeUser);
+  const newUserManager = new UserManager();
 
   const dispatch = useDispatch();
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [checked, setChecked] = useState(false);
+  const [error, setError] = useState("");
 
   const navigation = useNavigate();
   const [show, setShow] = useState(true);
@@ -39,7 +42,14 @@ export default function Login() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    if (username && password) {
+    const usernameValidation = newUserManager.allMovieSpotUsers.some(
+      (user) => user.userName === username
+    );
+    if (!usernameValidation) {
+      setError(
+        "You are trying to login with not existing username! Please, register first!"
+      );
+    } else if (usernameValidation & username && password) {
       dispatch(loginUser({ username, password }));
     }
   };
@@ -71,7 +81,8 @@ export default function Login() {
                 )) ||
                   (username && password && user.errorLogin && (
                     <p>{user.errorLogin}</p>
-                  ))}
+                  )) ||
+                  (error && <p>{error}</p>)}
               </Modal.Title>
             </Modal.Header>
             <Modal.Body>
