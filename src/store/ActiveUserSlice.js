@@ -34,6 +34,22 @@ export const loginUser = createAsyncThunk(
   }
 );
 
+export const logoutUser = createAsyncThunk(
+  "activeUser/logout",
+  ({ sessionId }, { rejectWithValue }) => {
+    return fetch(`https://itt-voting-api.herokuapp.com/logout`, {
+      method: "POST",
+      body: JSON.stringify({ id: `${sessionId}` }),
+      headers: { "Content-Type": "application/json" },
+    }).then((res) => {
+      if (res.ok) {
+        res.json();
+      } else {
+      }
+    });
+  }
+);
+
 export const activeUserSlice = createSlice({
   name: "activeUser",
   initialState,
@@ -53,7 +69,23 @@ export const activeUserSlice = createSlice({
       state.isLogged = false;
       state.userLoading = false;
     });
-    builder.addCase(loginUser.pending, (state, action) => {
+    builder.addCase(loginUser.pending, (state) => {
+      state.userLoading = true;
+    });
+    builder.addCase(logoutUser.fulfilled, (state) => {
+      state.sessionId = "";
+      state.username = "";
+      state.isLogged = false;
+      state.userLoading = false;
+      state.errorLogin = "";
+      state.isAdmin = false;
+    });
+    builder.addCase(logoutUser.rejected, (state, { payload }) => {
+      // state.errorLogin = payload.message;
+      // state.isLogged = false;
+      // state.userLoading = false;
+    });
+    builder.addCase(logoutUser.pending, (state) => {
       state.userLoading = true;
     });
   },

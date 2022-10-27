@@ -49,6 +49,7 @@ export default function RouterLogic() {
           <Routes location={location} key={location.pathname}>
             <Route path="hero" element={<HeroPage />} />
             <Route path="home" element={<HomePage />} />
+            <Route path="account" element={<HomePage />} />
             <Route path="/" element={<Navigate to="hero" replace />} />
             <Route path="login" element={<LoginPage />} />
             <Route path="register" element={<RegisterPage />} />
