@@ -1,0 +1,26 @@
+.order-history-table-container {
+  margin: 150px 40px 40px 40px;
+
+  flex-direction: column;
+  table,
+  th,
+  td {
+    border: 1px solid black;
+  }
+  table {
+    min-width: 90%;
+    margin-bottom: 20px;
+    thead {
+      color: #660708;
+      background-color: #edd382;
+    }
+    tbody {
+      color: #edd382;
+      background-color: #660708;
+    }
+    th,
+    td {
+      padding: 15px 15px 5px 15px;
+    }
+  }
+}

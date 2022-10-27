@@ -1,0 +1,23 @@
+.account-info-name {
+  min-width: 200px;
+  width: 60%;
+  min-height: 300px;
+  align-items: flex-start;
+  border-radius: 10px;
+  font-style: italic;
+  margin: 150px auto 50px auto;
+  ul {
+    li {
+      background-color: #edd382;
+      border-radius: 10px;
+      button {
+        font-style: italic;
+        color: #660708;
+      }
+    }
+  }
+}
+.logout-btn {
+  align-self: flex-end;
+  margin-bottom: 50px;
+}
