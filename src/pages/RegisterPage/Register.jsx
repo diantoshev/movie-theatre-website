@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import "./Register.scss";
 import UserManager from "../../models/UserManager";
+import User from "../../models/User";
 import {
   faCheck,
   faTimes,
@@ -66,6 +67,8 @@ export default function Register() {
         setError("");
         setSuccess(true);
         navigate("/login");
+        const newUser = new User(username, fullName);
+        userManager.addUser(newUser);
       }
     });
   };

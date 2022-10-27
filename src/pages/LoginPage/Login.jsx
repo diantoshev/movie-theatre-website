@@ -6,16 +6,15 @@ import { useNavigate } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../store/ActiveUserSlice";
-import clearError from "../../store/ActiveUserSlice";
 
 export default function Login() {
-  const user = useSelector((state) => state.activeUser.isLogged);
+  const user = useSelector((state) => state.activeUser);
+
   const dispatch = useDispatch();
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
-  // const [logged, setLogged] = useState(false);
+  const [checked, setChecked] = useState(false);
 
   const navigation = useNavigate();
   const [show, setShow] = useState(true);
@@ -26,24 +25,17 @@ export default function Login() {
 
   useEffect(() => {
     if (!show) {
-      // navigation("/home");
-    }
-  }, [show, navigation]);
-  useEffect(() => {
-    if (user) {
       navigation("/home");
     }
-  }, [user, navigation]);
+  }, [show, navigation]);
 
-  // useEffect(() => {
-  //   if (username && password) {
-  //     setError(user.errorLogin);
-  //   } else {
-  //     setError("");
+  // const validateForm = (e) => {
+  //   e.preventDefault();
+  //   if ((!username || !password) && user.errorLogin) {
+  //     user.errorLogin = "";
+  //     // dispatch(clearError());
   //   }
-  // }, [user.errorLogin, username, password]);
-
-  const validateForm = () => {};
+  // };
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -52,18 +44,34 @@ export default function Login() {
     }
   };
 
+  const handleCheckbox = (e) => {
+    if (e.target.checked) {
+      setChecked(true);
+    } else {
+      setChecked(false);
+    }
+  };
+  useEffect(() => {
+    if (checked && username) {
+      localStorage.setItem("rememberedMovieSpotUser", username);
+    } else {
+      localStorage.removeItem("rememberedMovieSpotUser");
+    }
+  }, [checked, username, user.isLogged]);
+
   return (
     <>
       <Modal size="sm" show={show} onHide={handleClose}>
         <div className="h-25 fst-italic login-style">
-          <Form onInput={validateForm}>
+          <Form>
             <Modal.Header closeButton>
               <Modal.Title>
-                {/* {(username && password && user.userLoading && (
+                {(username && password && user.userLoading && (
                   <p>Loading...</p>
                 )) ||
-                  (username && password && user.errorLogin && <p></p>)} */}
-                {/**Питам Слави за грешката */}
+                  (username && password && user.errorLogin && (
+                    <p>{user.errorLogin}</p>
+                  ))}
               </Modal.Title>
             </Modal.Header>
             <Modal.Body>
@@ -100,6 +108,7 @@ export default function Login() {
                   type="checkbox"
                   label="remember me"
                   id="loginCheckbox"
+                  onChange={handleCheckbox}
                 />
               </Form.Group>
               <Form.Group className="mb-3 text-style" controlId="btnLogin">
