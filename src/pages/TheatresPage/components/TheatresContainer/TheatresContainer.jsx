@@ -9,15 +9,19 @@ export default function TheatresContainer() {
 
   return (
     <div className="my-4 theatres-container-design container-sm d-flex flex-wrap justify-content-evenly gap-5">
-      {JSON.parse(allTheatres).map(theatre => <TheaterCard
-        key={theatre.id}
-        id={theatre.id}
-        name={theatre.name}
-        img={theatre.image}
-        address={theatre.address}
-        contacts={theatre.contacts}
-        workHours={theatre.workHours}
-      />)}
+      {allTheatres
+        .map(entry => JSON.parse(entry))
+        .map(theatre => {
+          return <TheaterCard
+            key={theatre.id}
+            id={theatre.id}
+            name={theatre.name}
+            img={theatre.image}
+            address={theatre.address}
+            contacts={theatre.contacts}
+            workHours={theatre.workHours}
+          />
+        })}
     </div>
   );
 }

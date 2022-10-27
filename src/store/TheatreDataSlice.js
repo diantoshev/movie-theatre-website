@@ -1,10 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
-import TheatreManager from "../models/TheatreManager";
+import { theatreManager } from "../models/TheatreManager.js";
 
-const theatreManager = new TheatreManager();
-// const allTheatres = theatreManager.allTheatres;
-
-const initialState = JSON.stringify(theatreManager.allTheatres);
+const initialState = theatreManager.allTheatres.map(theatre => JSON.stringify(theatre));
 
 
 export const theatresSlice = createSlice({

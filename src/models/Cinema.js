@@ -7,7 +7,7 @@ export default class Cinema {
     this.contacts = contacts;
     this.workHours = workHours;
     this.hallsNumber = hallsNumber;
-    this.allMovies = [];
-    this.date = [];
   }
+  allMovies = [];
+  screenings = [];
 }

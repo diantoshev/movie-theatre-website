@@ -11,7 +11,7 @@ import { useSelector } from "react-redux";
 export default function TheaterCard(props) {
   const activeUser = useSelector(state => state.activeUser)
   return (
-    <Tilt className="Tilt" options={{ max: 30, scale: 1.1 }} id={props.id} >
+    <Tilt className="Tilt" options={{ max: 15 }} id={props.id} >
       <GreyContainer className='p-4 rounded-3 card-container' id={props.id}>
         <Card className='bg-greyDark theatreCard' id={props.id}>
           {!(activeUser.isAdmin && activeUser.isLogged) ?
@@ -32,7 +32,7 @@ export default function TheaterCard(props) {
             </ImageOverlay>
           }
 
-          <Card.Body>
+          <Card.Body className="card-body">
             <Card.Title className='border-bottom border-goldMid mb-3 theatreTitle'>{props.name}</Card.Title>
 
             <Card.Text as='div' className="text-goldMid">

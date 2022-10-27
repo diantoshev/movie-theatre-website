@@ -9,7 +9,8 @@ import AddScreeningForm from "./components/AddScreeningForm/AddScreeningFrom";
 import { useSelector } from "react-redux";
 
 export default function TheatreDetailsPage(props) {
-  const activeUser = useSelector(state => state.activeUser)
+  const activeUser = useSelector(state => state.activeUser);
+
   return (
     <PageContainer>
       <AnimatePage>

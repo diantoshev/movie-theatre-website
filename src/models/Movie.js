@@ -11,4 +11,6 @@ export default class Movie {
     this.country = country;
     this.runtime = runtime;
   }
+
+  cinemaIds = ['cin1', 'cin2', 'cin3', 'cin4', 'cin5', 'cin6'];
 }

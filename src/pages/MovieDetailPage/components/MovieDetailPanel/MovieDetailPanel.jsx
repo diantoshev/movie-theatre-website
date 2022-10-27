@@ -1,11 +1,8 @@
 import GoldContainer from "../../../../components/GoldContainer/GoldContainer";
 import GreyContainer from "../../../../components/GreyContainer/GeryContainer";
 import SelectScreeningForm from "../SelectScreeningForm/SelectScreeningForm";
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import { fetchMovies } from '../../../../store/MovieDataSlice';
 import './MovieDetailPanel.scss';
 
 function MovieDetailPanel() {
@@ -15,11 +12,6 @@ function MovieDetailPanel() {
     const currentMovieId = pathNameArr[pathNameArr.length - 1];
     const movieData = useSelector(state => state.allMovies.data);
     const currentMovie = movieData.map(entry => JSON.parse(entry)).find(movie => currentMovieId === movie.id);
-
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(fetchMovies())
-    })
 
     return (
         <GoldContainer className='container-xxl py-3 px-5 rounded-2 mb-3'>
