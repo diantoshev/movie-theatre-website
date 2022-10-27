@@ -1,6 +1,5 @@
 import GreyContainer from "../../../../components/GreyContainer/GeryContainer";
 import "./AccountInfoNavigationContainer.scss";
-import GoldButton from "../../../../components/Buttons/GoldButton";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import AccountInfo from "../AccountInfo/AccountInfo";

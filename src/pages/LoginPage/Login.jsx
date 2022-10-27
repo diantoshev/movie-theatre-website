@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import "./Login.scss";
 import { useNavigate } from "react-router-dom";
@@ -11,6 +11,7 @@ import UserManager from "../../models/UserManager";
 export default function Login() {
   const user = useSelector((state) => state.activeUser);
   const newUserManager = new UserManager();
+  // const location = useLocation();
 
   const dispatch = useDispatch();
 
@@ -62,15 +63,8 @@ export default function Login() {
     }
   };
 
-  const handleCheckbox = (e) => {
-    if (e.target.checked) {
-      setChecked(true);
-    } else {
-      setChecked(false);
-    }
-  };
   useEffect(() => {
-    if (checked && username) {
+    if (checked) {
       localStorage.setItem("rememberedMovieSpotUser", username);
     } else {
       localStorage.removeItem("rememberedMovieSpotUser");
@@ -127,7 +121,8 @@ export default function Login() {
                   type="checkbox"
                   label="remember me"
                   id="loginCheckbox"
-                  onChange={handleCheckbox}
+                  checked={checked}
+                  onChange={(e) => setChecked(e.target.checked)}
                 />
               </Form.Group>
               <Form.Group className="mb-3 text-style" controlId="btnLogin">

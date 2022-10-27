@@ -20,4 +20,12 @@
 .logout-btn {
   align-self: flex-end;
   margin-bottom: 50px;
+  background-color: #edd382;
+  color: #660708;
+  border-radius: 10px;
+  padding: 10px;
+}
+.logout-btn:hover {
+  background-color: #660708;
+  color: #edd382;
 }

@@ -43,7 +43,9 @@ export const logoutUser = createAsyncThunk(
       headers: { "Content-Type": "application/json" },
     }).then((res) => {
       if (res.ok) {
-        res.json();
+        if (localStorage.getItem("rememberedMovieSpotUser")) {
+          localStorage.removeItem("rememberedMovieSpotUser");
+        }
       } else {
       }
     });
