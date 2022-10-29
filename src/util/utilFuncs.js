@@ -23,12 +23,11 @@ export function getRandomNumber(number) {
 
 // Function will return an array of occupied seat or random hours for screening,
 //  when screenings are randomly generated:
-export function getRandomSubSetFromArr(number, arr) {
+export function getRandomSubSetFromArr(number, length) {
     const result = [];
 
     do {
-        // debugger;
-        const currentItem = arr[Math.floor(Math.random() * arr.length)];
+        const currentItem = Math.floor(Math.random() * length);
 
         if (!result.includes(currentItem)) {
             result.push(currentItem);

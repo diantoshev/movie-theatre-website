@@ -2,14 +2,13 @@ import { useSelector } from "react-redux";
 import GreyContainer from "../../../../components/GreyContainer/GeryContainer";
 import ScreeningCard from '../ScreeningCard/ScreeningCard';
 import { useEffect } from 'react';
+import { movieManager } from "../../../../model/MovieManager";
+import { useDispatch } from "react-redux";
 
 export default function TheaterScreenings() {
 
   const screenings = useSelector(state => state.theatre.screenings).map(screening => JSON.parse(screening));
-  // console.log(screenings);
-  useEffect(() => {
-    console.log(screenings);
-  }, [])
+  console.log(screenings);
 
   return (
     <>

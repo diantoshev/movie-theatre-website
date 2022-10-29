@@ -4,8 +4,11 @@ import { IoTicketOutline } from 'react-icons/io5';
 import TimeSlotToggle from "../TimeSlotToggle/TimeSlotToggle";
 import RedContainer from "../../../../components/RedContainer/RedContainer";
 import './ScreeningCard.scss'
+import { useSelector } from 'react-redux';
 
 function ScreeningCard(props) {
+    const isLogged = useSelector(state => state.activeUser.isLogged);
+
     return (
         <RedContainer
             className="screening-container container justify-content-center p-3 rounded-3 w-100 gap-4"
@@ -21,7 +24,7 @@ function ScreeningCard(props) {
                     <TimeSlotToggle className='slotsToggle' />
                 </div>
                 <div className="w-100 mt-2">
-                    <NavLink to='/movies/:id'>
+                    <NavLink to={isLogged ? '/choose-seats' : '/login'}>
                         <GoldButton className="buyTickets"> <IoTicketOutline />  Buy Tickets</GoldButton>
                     </NavLink>
                 </div>

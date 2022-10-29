@@ -41,9 +41,9 @@ export default function Login() {
   //   }
   // };
 
-  const usernameValidation = newUserManager.allMovieSpotUsers.some(
-    (user) => user.userName === username
-  );
+  // const usernameValidation = newUserManager.allMovieSpotUsers.some(
+  //   (user) => user.userName === username
+  // );
   // useEffect(() => {
   //   if (!usernameValidation) {
   //     setError(
@@ -54,11 +54,12 @@ export default function Login() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    if (!usernameValidation) {
-      setError(
-        "You are trying to login with not existing username! Please, register first!"
-      );
-    } else if (usernameValidation && username && password) {
+    // if (!usernameValidation) {
+    //   setError(
+    //     "You are trying to login with not existing username! Please, register first!"
+    //   );
+    // } else if 
+    if (username && password) {
       dispatch(loginUser({ username, password }));
     }
   };

@@ -1,5 +1,5 @@
 import { v4 as uuid } from 'uuid';
-import { getRandomItem, getRandomNumber, getRandomSubSetFromArr, programDates } from '../util/utilFuncs';
+import { getRandomNumber, getRandomSubSetFromArr } from '../util/utilFuncs';
 
 export const hours = ['13:00', '15:00', '17:00', '19:00', '21:00'];
 
@@ -9,9 +9,9 @@ export class Screening {
     movieTitle,
     movieId,
     movieImage,
-    date = getRandomSubSetFromArr(6, programDates()),
+    date,
     hour,
-    occupiedSeats = [],
+    occupiedSeats = getRandomSubSetFromArr(13, 64),
     hall = getRandomNumber(5)
   ) {
     this.cinemaId = cinemaId;

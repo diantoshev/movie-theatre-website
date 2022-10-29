@@ -15,8 +15,8 @@ export default function AccountInfo() {
     <GoldContainer className="account-info-design">
       <Card style={{ width: "18rem" }}>
         <ListGroup variant="flush">
-          <ListGroup.Item>Fullname: {currentUser.fullName}</ListGroup.Item>
-          <ListGroup.Item>User: {currentUser.userName}</ListGroup.Item>
+          <ListGroup.Item>Fullname: Enter your names..</ListGroup.Item>
+          <ListGroup.Item>User: Username... </ListGroup.Item>
         </ListGroup>
       </Card>
     </GoldContainer>
