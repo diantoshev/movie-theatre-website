@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { MOVIES_DATA } from '../server/AllMovies';
-import Movie from '../models/Movie';
+import Movie from '../model/Movie';
 
 const initialState = {
     data: [],

@@ -17,8 +17,17 @@
 }
 
 .cinemaImage {
-    min-width: 300px !important;
+    max-width: 480px !important;
+    min-width: 480px !important;
+    max-height: 380px;
+    min-height: 380px;
+    object-fit: fill;
     filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.6));
+}
+
+.theatreInfo_container {
+    max-width: 450px;
+    max-height: 450px;
 }
 
 

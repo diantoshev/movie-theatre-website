@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../store/ActiveUserSlice";
-import UserManager from "../../models/UserManager";
+import UserManager from "../../model/UserManager";
 
 export default function Login() {
   const user = useSelector((state) => state.activeUser);

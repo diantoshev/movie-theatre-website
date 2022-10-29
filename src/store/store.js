@@ -1,12 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import activeUserReducer from "./ActiveUserSlice";
-import allTheatresReducer from './TheatreDataSlice';
-import allMoviesReducer from './MovieDataSlice';
+import allTheatresReducer from './TheatreSlice';
+import allMoviesReducer from './MovieSlice';
+import screeningReducer from './ScreeningSlice';
 
 export default configureStore({
   reducer: {
     activeUser: activeUserReducer,
-    allTheatres: allTheatresReducer,
+    theatre: allTheatresReducer,
     allMovies: allMoviesReducer,
+    screening: screeningReducer,
   },
 });

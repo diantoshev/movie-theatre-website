@@ -1,7 +1,10 @@
+import { MOVIES_DATA } from '../server/AllMovies';
 class MovieManager {
   constructor() {
     this.favoritesMovies = [];
   }
+
+  allMovies = JSON.parse(MOVIES_DATA);
 
   // Gets an array of all movies from the store and returns
   // a new set of only the genres for each movie in the list:
@@ -14,6 +17,10 @@ class MovieManager {
 
   getAllMovieNames(movies) {
     return movies.map(movie => movie.title);
+  }
+
+  getAllMovieIds(movies) {
+    return movies.map(movie => movie.id);
   }
 
   addToFavorites() { }

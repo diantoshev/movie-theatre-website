@@ -4,8 +4,8 @@ import Form from "react-bootstrap/Form";
 import { useNavigate } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import "./Register.scss";
-import UserManager from "../../models/UserManager";
-import User from "../../models/User";
+import UserManager from "../../model/UserManager";
+import User from "../../model/User";
 import {
   faCheck,
   faTimes,

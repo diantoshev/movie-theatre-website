@@ -2,7 +2,7 @@ import GoldContainer from "../../../../components/GoldContainer/GoldContainer";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import { useSelector } from "react-redux";
-import UserManager from "../../../../models/UserManager";
+import UserManager from "../../../../model/UserManager";
 import "./AccountInfo.scss";
 export default function AccountInfo() {
   const newUserManager = new UserManager();

@@ -1,16 +1,16 @@
 import { useSelector } from "react-redux";
 import TheaterCard from "../../../../components/TheaterCard/TheaterCard";
 import "./TheatresContainer.scss";
+import { theatreManager } from "../../../../model/TheatreManager";
 
 
 export default function TheatresContainer() {
 
-  const allTheatres = useSelector(state => state.allTheatres);
+  const allTheatres = theatreManager.allTheatres;
 
   return (
     <div className="my-4 theatres-container-design container-sm d-flex flex-wrap justify-content-evenly gap-5">
       {allTheatres
-        .map(entry => JSON.parse(entry))
         .map(theatre => {
           return <TheaterCard
             key={theatre.id}

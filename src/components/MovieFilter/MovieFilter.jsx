@@ -2,19 +2,19 @@ import GreyContainer from "../GreyContainer/GeryContainer"
 import { Form, FormControl, FormGroup } from "react-bootstrap";
 import "./MovieFIlter.scss";
 import { useSelector } from "react-redux";
-import { theatreManager } from '../../models/TheatreManager.js';
-import { movieManager } from "../../models/MovieManager";
+import { theatreManager } from '../../model/TheatreManager.js';
+import { movieManager } from "../../model/MovieManager";
+import { programDates } from '../../util/utilFuncs';
 export default function MovieFilter() {
 
     // Getting data from global state:
-    const theatreData = useSelector(state => state.allTheatres);
     const movieData = useSelector(state => state.allMovies.data);
 
     // Defining dropdown options:
-    const theatreNames = theatreManager.getTheatreNames(theatreData.map(theatre => JSON.parse(theatre)));
+    const theatreNames = theatreManager.getTheatreNames(theatreManager.allTheatres);
     const allGenres = movieManager.getListOfGenres(movieData.map(movie => JSON.parse(movie)));
     const movieNames = movieManager.getAllMovieNames(movieData.map(movie => JSON.parse(movie)));
-    const programDays = theatreManager.nextSevenDays();
+    const programDays = programDates();
 
     return (
         <GreyContainer className="container-sm py-4 rounded-3 movieFilterForm__container">

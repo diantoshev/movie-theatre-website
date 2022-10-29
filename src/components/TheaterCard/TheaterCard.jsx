@@ -9,7 +9,8 @@ import { RiCloseCircleLine } from 'react-icons/ri';
 import { useSelector } from "react-redux";
 
 export default function TheaterCard(props) {
-  const activeUser = useSelector(state => state.activeUser)
+  const activeUser = useSelector(state => state.activeUser);
+
   return (
     <Tilt className="Tilt" options={{ max: 15 }} id={props.id} >
       <GreyContainer className='p-4 rounded-3 card-container' id={props.id}>

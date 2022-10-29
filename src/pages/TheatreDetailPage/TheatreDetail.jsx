@@ -1,12 +1,13 @@
 import PageContainer from "../../components/PageContainer/PageContainer";
 import "./TheatreDetail.scss";
-import TheaterPanel from "./components/TheaterPanel/TheaterPanel";
 import AnimatePage from '../../components/AnimatePages/AnimatePage';
 import TheatreInfo from './components/TheatreInfo/TheatreInfo';
 import Accordion from '../../components/Accordion/Accordion';
 import EditTheatreForm from "./components/EditTheatreForm/EditTheatreForm";
 import AddScreeningForm from "./components/AddScreeningForm/AddScreeningFrom";
 import { useSelector } from "react-redux";
+import TheaterScreenings from "./components/TheaterScreenings/TheaterScreening";
+import { useLocation } from "react-router-dom";
 
 export default function TheatreDetailsPage(props) {
   const activeUser = useSelector(state => state.activeUser);
@@ -28,7 +29,7 @@ export default function TheatreDetailsPage(props) {
           <Accordion panelTitle='Add Screening'>
             <AddScreeningForm />
           </Accordion> : ''}
-        <TheaterPanel />
+        <TheaterScreenings />
       </AnimatePage>
     </PageContainer>
   );

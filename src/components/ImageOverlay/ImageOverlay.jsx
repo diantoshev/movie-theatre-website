@@ -4,14 +4,15 @@ import './ImageOverlay.scss';
 
 function ImageOverlay(props) {
 
-    // const handleRedirect =
+
     return (
         <div className='poster_container'>
             {props.children}
             <div className='poster_overlay'>
                 {props.overlayBtnNavText ?
                     <div className={props.overlayBtnActionText ? 'overlay_btn1' : 'overlay_btn'}>
-                        <Link to={props.overlayBtnNavLink}>
+                        <Link
+                            to={props.overlayBtnNavLink}>
                             <GoldButton
                             > {props.overlayBtnNavIcon} {props.overlayBtnNavText}</GoldButton></Link>
                     </div> : ''}
