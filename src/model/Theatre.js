@@ -10,5 +10,5 @@ export default class Cinema {
     this.hallsNumber = hallsNumber;
 
   }
-  screenings = [];
+  programDates = [];
 }

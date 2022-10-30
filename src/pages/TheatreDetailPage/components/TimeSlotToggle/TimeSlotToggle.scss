@@ -1,0 +1,14 @@
+@media (max-width: 767px) {
+
+    .toggle_group {
+        max-width: 300px !important;
+        flex-wrap: wrap;
+    }
+
+}
+
+.timeSlot_toggle:hover {
+    background-color: #F7B538 !important;
+    color: #A4161A !important;
+    font-weight: 600;
+}

@@ -31,7 +31,8 @@ function TheatreInfo(props) {
             id: initialTheatre.id,
             address: initialTheatre.address,
             contacts: initialTheatre.contacts,
-            screenings: initialTheatre.screenings.map(screening => JSON.stringify(screening))
+            programDates: initialTheatre.programDates.map(date =>
+                JSON.stringify(date))
         }));
     }, [])
 
@@ -55,7 +56,8 @@ function TheatreInfo(props) {
             id: selectedTheatre.id,
             address: selectedTheatre.address,
             contacts: selectedTheatre.contacts,
-            screenings: selectedTheatre.screenings.map(screening => JSON.stringify(screening))
+            programDates: selectedTheatre.programDates.map(date =>
+                JSON.stringify(date))
         }));
 
     }

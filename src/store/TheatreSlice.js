@@ -6,7 +6,7 @@ const initialState = {
     id: '',
     address: '',
     contacts: '',
-    screenings: []
+    programDates: []
 };
 
 
@@ -15,18 +15,17 @@ export const theatreSlice = createSlice({
     initialState,
     reducers: {
         saveSelectedTheatre: (state, action) => {
-            const { name, image, id, address, contacts, screenings } = action.payload;
+            const { name, image, id, address, contacts, programDates } = action.payload;
             state.name = name;
             state.image = image;
             state.id = id;
             state.address = address;
             state.contacts = contacts;
-            state.screenings = screenings;
+            state.programDates = programDates;
         },
     }
 })
 
-// Action creators are generated for each case reducer function
 export const { saveSelectedTheatre } = theatreSlice.actions
 
 export default theatreSlice.reducer

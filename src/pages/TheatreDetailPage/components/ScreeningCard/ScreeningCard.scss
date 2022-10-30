@@ -15,3 +15,25 @@
         max-width: 600px;
     }
 }
+
+@media (max-width: 767px) {
+
+    .screening-container {
+
+        img {
+            height: 200px !important;
+            width: 145px;
+            object-fit: fill;
+            margin-left: 20px;
+        }
+
+        h2 {
+            text-align: start;
+            text-shadow: 4px 2px 3px rgb(0 0 0);
+        }
+
+        .slotsToggle {
+            max-width: 600px;
+        }
+    }
+}

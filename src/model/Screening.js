@@ -10,7 +10,7 @@ export class Screening {
     movieId,
     movieImage,
     date,
-    hour,
+    hour = hours,
     occupiedSeats = getRandomSubSetFromArr(13, 64),
     hall = getRandomNumber(5)
   ) {

@@ -1,11 +1,11 @@
 import moment from "moment/moment";
 
-export function programDates() {
+export function programDays() {
     const programDates = []
     const dateStart = moment();
     const dateEnd = moment().add(7, 'days');
-    while (dateEnd.diff(dateStart, 'days') >= 0) {
-        programDates.push(dateStart.format('DD/MM-(ddd)'))
+    while (dateEnd.diff(dateStart, 'days') > 0) {
+        programDates.push(dateStart.format('DD-MM-YYYY'))
         dateStart.add(1, 'days')
     }
     return programDates;
