@@ -23,6 +23,23 @@ class MovieManager {
     return movies.map(movie => movie.id);
   }
 
+  getRandomMovies(number) {
+    const result = [];
+
+    do {
+      const currentItem = this.allMovies[Math.floor(Math.random() * this.allMovies.length)];
+
+      const isItemPresent = result.find(item => item.Title === currentItem.Title)
+      if (!isItemPresent) {
+        result.push(currentItem);
+      }
+
+    } while (result.length < number);
+
+    return result;
+
+  }
+
   addToFavorites() { }
   removeFromFavorites() { }
   filterTheatres() { }

@@ -4,7 +4,7 @@ import "./MovieFIlter.scss";
 import { useSelector } from "react-redux";
 import { theatreManager } from '../../model/TheatreManager.js';
 import { movieManager } from "../../model/MovieManager";
-import { programDates } from '../../util/utilFuncs';
+import { programDays } from '../../util/utilFuncs';
 export default function MovieFilter() {
 
     // Getting data from global state:
@@ -14,7 +14,7 @@ export default function MovieFilter() {
     const theatreNames = theatreManager.getTheatreNames(theatreManager.allTheatres);
     const allGenres = movieManager.getListOfGenres(movieData.map(movie => JSON.parse(movie)));
     const movieNames = movieManager.getAllMovieNames(movieData.map(movie => JSON.parse(movie)));
-    const programDays = programDates();
+    const nextProgramDays = programDays();
 
     return (
         <GreyContainer className="container-sm py-4 rounded-3 movieFilterForm__container">
@@ -34,7 +34,7 @@ export default function MovieFilter() {
                     </Form.Select>
                     <Form.Select className="bg-goldMid">
                         <option> Choose a date...</option>
-                        {programDays.map(day => <option key={day}>{day}</option>)}
+                        {nextProgramDays.map(day => <option key={day}>{day}</option>)}
                     </Form.Select>
                 </FormGroup>
                 <p>OR</p>
