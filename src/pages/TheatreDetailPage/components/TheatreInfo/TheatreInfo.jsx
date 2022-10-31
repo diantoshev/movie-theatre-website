@@ -8,6 +8,7 @@ import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { saveSelectedTheatre } from "../../../../store/TheatreSlice";
 import { useDispatch } from "react-redux";
+import { updateTheatre } from "../../../../store/ScreeningSlice";
 
 function TheatreInfo(props) {
 
@@ -21,8 +22,8 @@ function TheatreInfo(props) {
         const pathArr = location.pathname.split('/');
         return pathArr[pathArr.length - 1] !== ':id' ? pathArr[pathArr.length - 1] : 'cin1';
     })();
-    // Initial theatre to be populated:
 
+    // Initial theatre to be populated:
     let initialTheatre = theatreManager.allTheatres.find(theatre => theatre.id === theatreKey);
     useEffect(() => {
         dispatch(saveSelectedTheatre({
@@ -50,6 +51,7 @@ function TheatreInfo(props) {
         setAddress(selectedTheatre.address);
         setContacts(selectedTheatre.contacts);
         setWorkHours(selectedTheatre.workHours);
+
         dispatch(saveSelectedTheatre({
             name: selectedTheatre.name,
             image: selectedTheatre.image,
@@ -59,6 +61,11 @@ function TheatreInfo(props) {
             programDates: selectedTheatre.programDates.map(date =>
                 JSON.stringify(date))
         }));
+
+        dispatch(updateTheatre({
+            theatreName: selectedTheatre.name,
+            theatreId: selectedTheatre.id
+        }))
 
     }
 

@@ -7,7 +7,6 @@ import EditTheatreForm from "./components/EditTheatreForm/EditTheatreForm";
 import AddScreeningForm from "./components/AddScreeningForm/AddScreeningFrom";
 import { useSelector } from "react-redux";
 import TheaterScreenings from "./components/TheaterScreenings/TheaterScreening";
-import { useLocation } from "react-router-dom";
 
 export default function TheatreDetailsPage(props) {
   const activeUser = useSelector(state => state.activeUser);

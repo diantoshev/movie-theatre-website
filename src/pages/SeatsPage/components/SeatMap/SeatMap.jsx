@@ -2,29 +2,9 @@ import './SeatMap.scss';
 import React, { useState } from 'react';
 import clsx from 'clsx';
 import GreyContainer from '../../../../components/GreyContainer/GeryContainer';
-
-const movies = [
-    {
-        name: 'Avenger',
-        price: 10,
-        occupied: [20, 21, 30, 1, 2, 8],
-    },
-    {
-        name: 'Joker',
-        price: 12,
-        occupied: [9, 41, 35, 11, 65, 26],
-    },
-    {
-        name: 'Toy story',
-        price: 8,
-        occupied: [37, 25, 44, 13, 2, 3],
-    },
-    {
-        name: 'the lion king',
-        price: 9,
-        occupied: [10, 12, 50, 33, 28, 47],
-    },
-]
+import { useSelector } from 'react-redux';
+import { theatreManager } from '../../../../model/TheatreManager';
+import { useEffect } from 'react';
 
 const seats = Array.from({ length: 8 * 8 }, (_, i) => i)
 
@@ -32,7 +12,7 @@ function ShowCase() {
     return (
         <ul className="ShowCase">
             <li>
-                <span className="seat" /> <small>N/A</small>
+                <span className="seat" /> <small>Free</small>
             </li>
             <li>
                 <span className="seat selected" /> <small>Selected</small>
@@ -45,14 +25,33 @@ function ShowCase() {
 }
 
 function Cinema({ movie, selectedSeats, onSelectedSeatsChange }) {
+    const selectedScreeningId = useSelector(state => state.screening.screeningId);
+    const selectedTheatreId = useSelector(state => state.screening.theatreId);
+    const selectedDate = useSelector(state => state.screening.date);
+
+    // Will get all screenings for this date, from the slected theatre:
+    const programDate = theatreManager.allTheatres
+        .filter(theatre => theatre.id === selectedTheatreId)[0].programDates
+        .find(date => Object.keys(date)[0] === selectedDate)
+
+    // WIll take the current screenings that the user has selected:
+    // debugger;
+    const currentScreening = Object.values(programDate)
+        .flat()
+        .find(screening => screening.id === selectedScreeningId)
+
+
     function handleSelectedState(seat) {
+        // debugger;
         const isSelected = selectedSeats.includes(seat)
         if (isSelected) {
             onSelectedSeatsChange(
                 selectedSeats.filter(selectedSeat => selectedSeat !== seat),
+                currentScreening.occupiedSeats = currentScreening.occupiedSeats.filter(selectedSeat => selectedSeat !== seat),
             )
         } else {
             onSelectedSeatsChange([...selectedSeats, seat])
+            currentScreening.occupiedSeats = [...currentScreening.occupiedSeats, seat]
         }
     }
 
@@ -93,7 +92,29 @@ function Cinema({ movie, selectedSeats, onSelectedSeatsChange }) {
 
 function SeatMap() {
 
-    const [selectedMovie, setSelectedMovie] = useState(movies[0]);
+    const selectedScreeningId = useSelector(state => state.screening.screeningId);
+    const selectedTheatreId = useSelector(state => state.screening.theatreId);
+    const selectedDate = useSelector(state => state.screening.date);
+    const screeningPrice = useSelector(state => state.screening.price);
+
+    // Will get all screenings for this date, from the slected theatre:
+    const programDate = theatreManager.allTheatres
+        .filter(theatre => theatre.id === selectedTheatreId)[0].programDates
+        .find(date => Object.keys(date)[0] === selectedDate)
+
+    // WIll take the current screenings that the user has selected:
+    // debugger;
+    const currentScreening = Object.values(programDate)
+        .flat()
+        .find(screening => screening.id === selectedScreeningId)
+
+
+    const currentMovie = {
+        price: screeningPrice,
+        occupied: currentScreening.occupiedSeats ? currentScreening.occupiedSeats : []
+    }
+
+    const [selectedMovie, setSelectedMovie] = useState(currentMovie);
     const [selectedSeats, setSelectedSeats] = useState([]);
 
     return (

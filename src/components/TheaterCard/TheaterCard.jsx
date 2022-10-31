@@ -12,11 +12,12 @@ export default function TheaterCard(props) {
   const activeUser = useSelector(state => state.activeUser);
 
   return (
-    <Tilt className="Tilt" options={{ max: 15 }} id={props.id} >
-      <GreyContainer className='p-4 rounded-3 card-container' id={props.id}>
-        <Card className='bg-greyDark theatreCard' id={props.id}>
+    <Tilt className="Tilt" options={{ max: 15 }} id={props.id} name={props.name}>
+      <GreyContainer className='p-4 rounded-3 card-container' id={props.id} name={props.name} >
+        <Card className='bg-greyDark theatreCard' id={props.id} name={props.name}>
           {!(activeUser.isAdmin && activeUser.isLogged) ?
             <ImageOverlay
+              theatreName={props.name}
               id={props.id}
               overlayBtnNavText='Check Program'
               overlayBtnNavLink={`/theatres/${props.id}`}
@@ -24,6 +25,7 @@ export default function TheaterCard(props) {
               <Card.Img variant="top" src={props.img} />
             </ImageOverlay> :
             <ImageOverlay
+              theatreName={props.name}
               overlayBtnNavText='Edit Theatre'
               overlayBtnNavLink={`/theatres/${props.id}`}
               overlayBtnNavIcon={<BiWrench />}

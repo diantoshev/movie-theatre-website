@@ -1,7 +1,8 @@
 import { v4 as uuid } from 'uuid';
-import { getRandomNumber, getRandomSubSetFromArr } from '../util/utilFuncs';
+import { getRandomNumber, getRandomSubSetFromArr, getRandomItem } from '../util/utilFuncs';
 
 export const hours = ['13:00', '15:00', '17:00', '19:00', '21:00'];
+export const pricing = [10, 9, 12, 15];
 
 export class Screening {
   constructor(
@@ -12,7 +13,8 @@ export class Screening {
     date,
     hour = hours,
     occupiedSeats = getRandomSubSetFromArr(13, 64),
-    hall = getRandomNumber(5)
+    hall = getRandomNumber(5),
+    price = getRandomItem(pricing)
   ) {
     this.cinemaId = cinemaId;
     this.movie = movieTitle;
@@ -22,6 +24,7 @@ export class Screening {
     this.hour = hour;
     this.occupiedSeats = occupiedSeats;
     this.hall = hall;
+    this.price = price;
   }
 
   id = uuid();

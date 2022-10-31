@@ -3,11 +3,24 @@ import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
 import './Navigation.scss';
 import GoldButton from '../Buttons/GoldButton';
-import { useSelector } from 'react-redux';
-
+import { useSelector, useDispatch } from 'react-redux';
+import { updateTheatre, updateScreening, updateDate, updateMovie } from '../../store/ScreeningSlice';
+import { programDays } from '../../util/utilFuncs';
 export default function Navigation() {
     const activeUser = useSelector(state => state.activeUser);
+    const dispatch = useDispatch();
 
+    const clearCinemaInfo = () => {
+        dispatch(updateTheatre({ theatreName: 'Sofia - Mladost 1', theatreId: 'cin1' }))
+        dispatch(updateScreening({ screeningId: '', hour: '' }))
+        dispatch(updateDate({ date: programDays()[0] }))
+        dispatch(updateMovie({
+            screeningId: '',
+            movieTitle: '',
+            movieId: '',
+            movieImage: '',
+        }))
+    }
     return (
         <Navbar bg="transparent" expand="lg" className='nav w-100' fixed='top'>
             <div className="container-fluid w-100">
@@ -17,7 +30,7 @@ export default function Navigation() {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" className='bg-goldMid' />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="justify-content-between w-100 mx-0">
-                        <Link to='/theatres/:id'><GoldButton>Program</GoldButton></Link>
+                        <Link onClick={clearCinemaInfo} to='/theatres/cin1'><GoldButton>Program</GoldButton></Link>
                         <Link to='/theatres'><GoldButton>Theatres</GoldButton></Link>
                         <Link to='/movies'><GoldButton>Movies</GoldButton></Link>
                         {activeUser.isLogged ?

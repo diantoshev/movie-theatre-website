@@ -6,7 +6,7 @@ import RouterLogic from "./pages/Router/Router";
 import { useDispatch } from 'react-redux';
 import { fetchMovies } from './store/MovieSlice';
 import { theatreManager } from './model/TheatreManager';
-import { getRandomItem, programDays } from "./util/utilFuncs";
+import { programDays } from "./util/utilFuncs";
 import { Screening } from './model/Screening';
 import { movieManager } from './model/MovieManager';
 

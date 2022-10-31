@@ -1,32 +1,53 @@
 import { createSlice } from '@reduxjs/toolkit';
-
+import { programDays } from '../util/utilFuncs';
 const initialState = {
-    cinemaId: '',
+    screeningId: '',
+    theatreId: '',
+    theatreName: '',
     movieTitle: '',
     movieId: '',
-    date: '',
+    movieImage: '',
+    date: programDays()[0],
     hour: '',
-    occupiedSeats: [],
-    hall: ''
+    price: ''
 }
 
 export const screeningsSlice = createSlice({
-    name: 'allScreenings',
+    name: 'selectedScreening',
     initialState,
     reducers: {
-        populateScreenings: (state, action) => {
-            console.log(action.payload);
+        updateScreening: (state, action) => {
+            const { screeningId, hour } = action.payload;
+            state.screeningId = screeningId;
+            state.hour = hour;
+
         },
-        decrement: (state) => {
-            state.value -= 1
+
+        updateTheatre: (state, action) => {
+            const { theatreName, theatreId } = action.payload;
+            state.theatreName = theatreName;
+            state.theatreId = theatreId;
+
         },
-        incrementByAmount: (state, action) => {
-            state.value += action.payload
+
+        updateDate: (state, action) => {
+            const { date } = action.payload;
+            state.date = date;
         },
+
+        updateMovie: (state, action) => {
+            const { movieId, screeningId, movieImage, movieTitle, price } = action.payload;
+            state.screeningId = screeningId;
+            state.movieTitle = movieTitle;
+            state.movieId = movieId;
+            state.movieImage = movieImage;
+            state.price = price;
+        },
+
     },
 })
 
 // Action creators are generated for each case reducer function
-export const { populateScreenings } = screeningsSlice.actions
+export const { updateTheatre, updateScreening, updateDate, updateMovie } = screeningsSlice.actions
 
 export default screeningsSlice.reducer

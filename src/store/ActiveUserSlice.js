@@ -82,14 +82,6 @@ export const activeUserSlice = createSlice({
       state.errorLogin = "";
       state.isAdmin = false;
     });
-    builder.addCase(logoutUser.rejected, (state, { payload }) => {
-      // state.errorLogin = payload.message;
-      // state.isLogged = false;
-      // state.userLoading = false;
-    });
-    builder.addCase(logoutUser.pending, (state) => {
-      state.userLoading = true;
-    });
   },
 });
 
