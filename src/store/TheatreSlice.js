@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { programDays } from '../util/utilFuncs';
 
 const initialState = {
     name: '',
@@ -6,6 +7,7 @@ const initialState = {
     id: '',
     address: '',
     contacts: '',
+    currentDate: programDays()[0],
     programDates: []
 };
 
@@ -23,9 +25,13 @@ export const theatreSlice = createSlice({
             state.contacts = contacts;
             state.programDates = programDates;
         },
+
+        updateCurrentDate: (state, action) => {
+            state.currentDate = action.payload;
+        }
     }
 })
 
-export const { saveSelectedTheatre } = theatreSlice.actions
+export const { saveSelectedTheatre, updateCurrentDate } = theatreSlice.actions
 
 export default theatreSlice.reducer

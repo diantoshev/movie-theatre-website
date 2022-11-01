@@ -18,12 +18,7 @@ export default function TheatreDetailsPage(props) {
           <Accordion panelTitle='Edit Theatre'>
             <EditTheatreForm />
           </Accordion> : ''}
-        <TheatreInfo
-          theatreName='Sofia - Mladost 1'
-          theatreAddress='Mladost 1 - somewhere'
-          theatrePhone='0888 888 888'
-          theatreHours='10h-23h'
-        ></TheatreInfo>
+        <TheatreInfo />
         {(activeUser.isAdmin && activeUser.isLogged) ?
           <Accordion panelTitle='Add Screening'>
             <AddScreeningForm />

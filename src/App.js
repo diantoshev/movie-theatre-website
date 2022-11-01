@@ -9,6 +9,9 @@ import { theatreManager } from './model/TheatreManager';
 import { programDays } from "./util/utilFuncs";
 import { Screening } from './model/Screening';
 import { movieManager } from './model/MovieManager';
+import ProgramEntry from "./model/ProgramEntry";
+import { screeningManager } from './model/ScreeningManager';
+import { updateProgramEntries } from './store/ProgramEntrySlice';
 
 function App() {
   // Will fetch all movies from the fake server and add them to the state, 
@@ -20,26 +23,36 @@ function App() {
 
   const nextWeekProgram = programDays();
   const allTheatres = theatreManager.allTheatres;
-
+  const hours = ['13:00', '15:00', '17:00', '19:00', '21:00'];
+  const programEntries = screeningManager.allScreenings;
   // This function will take all screenings, go through each theatre program,
   // get n unique movies form allMovies and push individual screenings for each day.
   (function initiateScreenings() {
     allTheatres.forEach(theatre => {
       nextWeekProgram.forEach(date => {
         const programDate = { [date]: [] };
-        movieManager.getRandomMovies(7).forEach(randomMovie => {
-          const currentScreening = new Screening(
+        movieManager.getRandomMovies(3).forEach(randomMovie => {
+          const programEntry = new ProgramEntry(
             theatre.id,
             randomMovie.Title,
             randomMovie.imdbID,
             randomMovie.Poster,
-            date)
-          programDate[date].push(currentScreening)
+            date,
+          );
+          hours.forEach(hour => {
+            const currentScreening = new Screening(hour);
+            programEntry.screenings.push(currentScreening)
+          })
+          programDate[date].push(programEntry)
+          programEntries.push(programEntry);
         })
         theatre.programDates.push(programDate);
       })
     })
+
+    dispatch(updateProgramEntries(JSON.parse(JSON.stringify(programEntries))))
   })();
+
 
   return (
     <div className="App">

@@ -8,12 +8,15 @@ import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { saveSelectedTheatre } from "../../../../store/TheatreSlice";
 import { useDispatch } from "react-redux";
-import { updateTheatre } from "../../../../store/ScreeningSlice";
+import { updateCurrentDate } from '../../../../store/TheatreSlice';
+import { programDays } from '../../../../util/utilFuncs';
+
 
 function TheatreInfo(props) {
 
     const dispatch = useDispatch();
     const allTheatres = theatreManager.allTheatres;
+
 
     // Get theatreId from URL and render the current theatre. 
     // If navigating from Program button, first item is preselected in dropdown: 
@@ -25,6 +28,7 @@ function TheatreInfo(props) {
 
     // Initial theatre to be populated:
     let initialTheatre = theatreManager.allTheatres.find(theatre => theatre.id === theatreKey);
+
     useEffect(() => {
         dispatch(saveSelectedTheatre({
             name: initialTheatre.name,
@@ -32,10 +36,14 @@ function TheatreInfo(props) {
             id: initialTheatre.id,
             address: initialTheatre.address,
             contacts: initialTheatre.contacts,
-            programDates: initialTheatre.programDates.map(date =>
-                JSON.stringify(date))
+            programDates: JSON.parse(JSON.stringify(initialTheatre.programDates))
         }));
+
+
+        dispatch(updateCurrentDate(programDays()[0]));
+
     }, [])
+
 
     const [image, setImage] = useState(initialTheatre.image);
     const [name, setName] = useState(initialTheatre.name);
@@ -58,15 +66,8 @@ function TheatreInfo(props) {
             id: selectedTheatre.id,
             address: selectedTheatre.address,
             contacts: selectedTheatre.contacts,
-            programDates: selectedTheatre.programDates.map(date =>
-                JSON.stringify(date))
+            programDates: JSON.parse(JSON.stringify(selectedTheatre.programDates))
         }));
-
-        dispatch(updateTheatre({
-            theatreName: selectedTheatre.name,
-            theatreId: selectedTheatre.id
-        }))
-
     }
 
 

@@ -19,7 +19,7 @@ export default function SeatsPage(props) {
                             <OrderInfo />
                         </div>
                         <div className='seatMap__container mt-2'>
-                            <SeatMap />
+                            {/* <SeatMap /> */}
                             <div className='actionButtons d-flex justify-content-lg-evenly mt-5 gap-lg-5 w-100'>
                                 <NavLink to='/home'><GreyButton>Cancel</GreyButton></NavLink>
                                 <NavLink to='/booking-complete'><GoldButton>Confirm order</GoldButton></NavLink>
