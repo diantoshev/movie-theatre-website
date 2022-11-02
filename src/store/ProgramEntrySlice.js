@@ -15,14 +15,23 @@ export const programEntriesSlice = createSlice({
 
         updateEntryData: (state, action) => {
             const updatedItem = action.payload;
-            state = [...JSON.parse(JSON.stringify(state.filter(item => item.id !== updatedItem.id))), updatedItem]
+            return [...JSON.parse(JSON.stringify(state.filter(item => item.id !== updatedItem.id))), JSON.parse(JSON.stringify(updatedItem))]
+        },
 
-        }
-
+        clearPreviouslySelected: (state) => {
+            return state.map(entry => {
+                return {
+                    ...entry,
+                    selectedHour: '',
+                    selectedDate: '',
+                    selectedScreeningId: ''
+                }
+            })
+        },
     },
 })
 
 // Action creators are generated for each case reducer function
-export const { updateProgramEntries, updateEntryData } = programEntriesSlice.actions
+export const { updateProgramEntries, updateEntryData, clearPreviouslySelected } = programEntriesSlice.actions
 
 export default programEntriesSlice.reducer

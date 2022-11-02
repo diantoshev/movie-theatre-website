@@ -20,13 +20,6 @@ export default function RouterLogic() {
   const location = useLocation();
   const activeUser = useSelector((state) => state.activeUser);
 
-  //   const navigate = useNavigate();
-  //   useEffect(() => {
-  //     if (activeUser.isLogged && location === "*") {
-  //       navigate("/home");
-  //     }
-  //   }, [activeUser.isLogged, navigate, location]);
-
   return (
     <>
       <AnimatePresence>

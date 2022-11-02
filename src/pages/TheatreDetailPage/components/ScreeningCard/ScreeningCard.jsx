@@ -11,7 +11,9 @@ import './TimeSlotToggle.scss';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import { useDispatch } from "react-redux";
-import { updateEntryData } from "../../../../store/ProgramEntrySlice";
+import { updateEntryData, clearPreviouslySelected } from "../../../../store/ProgramEntrySlice";
+import { updateSelectedProgramEntry } from "../../../../store/OrderSlice";
+import { screeningManager } from '../../../../model/ScreeningManager';
 
 function ScreeningCard(props) {
     const isLogged = useSelector(state => state.activeUser.isLogged);
@@ -41,16 +43,18 @@ function ScreeningCard(props) {
     }
 
     const currentDate = useSelector(state => state.theatre.currentDate);
-    const programEntries = [...useSelector(state => state.programEntries)];
+    const programEntries = screeningManager.allScreenings;
 
     const handleSelect = (e) => {
         const selectedProgramEntryToggle = e.split('_')[0];
         const selectedScreeningToggle = e.split('_')[1];
         const selectedHourToggle = e.split('_')[2];
-        const programEntry = JSON.parse(JSON.stringify(programEntries.find(entry => entry.id === selectedProgramEntryToggle)))
+        const programEntry = programEntries.find(entry => entry.id === selectedProgramEntryToggle);
         programEntry.selectedDate = currentDate;
         programEntry.selectedHour = selectedHourToggle;
         programEntry.selectedScreeningId = selectedScreeningToggle;
+        dispatch(clearPreviouslySelected());
+        dispatch(updateSelectedProgramEntry(programEntry.id))
         dispatch(updateEntryData(JSON.parse(JSON.stringify(programEntry))));
         setButton(false)
         uncheckOtherToggles(e);
@@ -59,9 +63,9 @@ function ScreeningCard(props) {
 
 
     const buyTickets = () => {
-
         navigate(isLogged ? '/choose-seats' : '/login');
     }
+
     return (
         <RedContainer
             className="screening-container container justify-content-center p-3 rounded-3 w-100 my-4 gap-3"

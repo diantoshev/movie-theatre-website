@@ -6,6 +6,7 @@ export const pricing = [10, 9, 12, 15];
 export default class ProgramEntry {
     constructor(
         cinemaId,
+        cinemaName,
         movieTitle,
         movieId,
         movieImage,
@@ -13,6 +14,7 @@ export default class ProgramEntry {
         price = getRandomItem(pricing)
     ) {
         this.cinemaId = cinemaId;
+        this.cinemaName = cinemaName;
         this.movie = movieTitle;
         this.movieId = movieId;
         this.movieImage = movieImage;

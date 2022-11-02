@@ -31,9 +31,10 @@ function App() {
     allTheatres.forEach(theatre => {
       nextWeekProgram.forEach(date => {
         const programDate = { [date]: [] };
-        movieManager.getRandomMovies(3).forEach(randomMovie => {
+        movieManager.getRandomMovies(7).forEach(randomMovie => {
           const programEntry = new ProgramEntry(
             theatre.id,
+            theatre.name,
             randomMovie.Title,
             randomMovie.imdbID,
             randomMovie.Poster,

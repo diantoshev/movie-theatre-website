@@ -8,20 +8,23 @@ import { programDays } from "../../../../util/utilFuncs";
 import { screeningManager } from "../../../../model/ScreeningManager";
 import { useDispatch } from "react-redux";
 import { updateCurrentDate } from "../../../../store/TheatreSlice";
+import { useEffect, useRef } from "react";
 
 
 export default function TheaterScreenings() {
 
   //Taking program for current theatre from store:
-  const program = programDays();
+
   const dispatch = useDispatch();
+  const program = programDays();
   const selectedTeathre = useSelector(state => state.theatre);
   const programForTheatre = screeningManager.allScreenings
     .filter(entry => entry.cinemaId === selectedTeathre.id);
 
+
   // Will get the first day of the program dates, and assign it as
   // a default active event key for tab program:
-  let defaultActiveTabKey = programDays()[0];
+  const defaultActiveTabKey = program[0];
 
 
   // Function to create tabs for each day of the program, 
@@ -39,12 +42,8 @@ export default function TheaterScreenings() {
     })
   };
 
-  const handleSelect = (e) => {
-    dispatch(updateCurrentDate(e));
-  }
 
   // Function to populate each tab with random screenings:
-
   const createScreenings = (day) => {
     const dayEntries = programForTheatre.filter(entry => entry.date === day);
     return dayEntries.map(entry => {
@@ -58,6 +57,10 @@ export default function TheaterScreenings() {
         price={entry.price}
       />
     })
+  }
+
+  const handleSelect = (e) => {
+    dispatch(updateCurrentDate(e));
   }
 
   return (

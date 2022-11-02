@@ -1,4 +1,8 @@
-export default class OrderManager {
-  createOrder() {}
-  addOrderToHistory() {}
+
+class OrderManager {
+
+  allOrders = [];
+
 }
+
+export const orderManager = new OrderManager();

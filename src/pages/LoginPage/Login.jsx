@@ -33,32 +33,8 @@ export default function Login() {
     }
   }, [show, navigation]);
 
-  // const validateForm = (e) => {
-  //   e.preventDefault();
-  //   if ((!username || !password) && user.errorLogin) {
-  //     user.errorLogin = "";
-  //     // dispatch(clearError());
-  //   }
-  // };
-
-  // const usernameValidation = newUserManager.allMovieSpotUsers.some(
-  //   (user) => user.userName === username
-  // );
-  // useEffect(() => {
-  //   if (!usernameValidation) {
-  //     setError(
-  //       "You are trying to login with not existing username! Please, register first!"
-  //     );
-  //   }
-  // }, [usernameValidation]);
-
   const handleLogin = (e) => {
     e.preventDefault();
-    // if (!usernameValidation) {
-    //   setError(
-    //     "You are trying to login with not existing username! Please, register first!"
-    //   );
-    // } else if 
     if (username && password) {
       dispatch(loginUser({ username, password }));
     }
