@@ -11,7 +11,7 @@ function MovieDetailPanel() {
     const pathNameArr = location.pathname.split('/');
     const currentMovieId = pathNameArr[pathNameArr.length - 1];
     const movieData = useSelector(state => state.allMovies.data);
-    const currentMovie = movieData.map(entry => JSON.parse(entry)).find(movie => currentMovieId === movie.id);
+    const currentMovie = movieData.find(movie => currentMovieId === movie.id);
 
     return (
         <GoldContainer className='container-xxl py-3 px-5 rounded-2 mb-3'>

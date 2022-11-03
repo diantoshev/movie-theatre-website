@@ -28,7 +28,7 @@ export const fetchMovies = createAsyncThunk(
                     entry.Runtime
                 )
             }))
-            .then(transformed => transformed.map(item => JSON.stringify(item)))
+            .then(transformed => JSON.parse(JSON.stringify(transformed)))
     }
 )
 
@@ -43,8 +43,5 @@ const allMovies = createSlice({
         })
     }
 })
-
-// Action creators are generated for each case reducer function
-export const { } = allMovies.actions
 
 export default allMovies.reducer

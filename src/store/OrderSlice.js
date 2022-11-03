@@ -27,7 +27,6 @@ export const orderSlice = createSlice({
         clearOrder: (state) => {
             state.seats = [];
             state.total = 0;
-            state.programId = '';
         },
 
         updateSelectedProgramEntry: (state, action) => {

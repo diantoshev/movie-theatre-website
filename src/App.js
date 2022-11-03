@@ -18,7 +18,7 @@ function App() {
   // when the app initializes, so they are available to acces on every page:
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchMovies());
+    dispatch(fetchMovies())
   }, []);
 
   const nextWeekProgram = programDays();
@@ -31,7 +31,7 @@ function App() {
     allTheatres.forEach(theatre => {
       nextWeekProgram.forEach(date => {
         const programDate = { [date]: [] };
-        movieManager.getRandomMovies(7).forEach(randomMovie => {
+        movieManager.getRandomMovies(1).forEach(randomMovie => {
           const programEntry = new ProgramEntry(
             theatre.id,
             theatre.name,

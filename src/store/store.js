@@ -4,6 +4,7 @@ import allTheatresReducer from './TheatreSlice';
 import allMoviesReducer from './MovieSlice';
 import programEntryReducer from './ProgramEntrySlice';
 import orderSliceReducer from './OrderSlice';
+import movieFilterReducer from './FilterSlice';
 
 export default configureStore({
   reducer: {
@@ -11,6 +12,7 @@ export default configureStore({
     theatre: allTheatresReducer,
     allMovies: allMoviesReducer,
     programEntries: programEntryReducer,
-    order: orderSliceReducer
+    order: orderSliceReducer,
+    movieFilter: movieFilterReducer
   },
 });

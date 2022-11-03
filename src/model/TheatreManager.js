@@ -15,11 +15,9 @@ class TheatreManager {
   }
 
   getTheatreNames() {
-    return this.allTheatres.map(theatre => theatre.name);
-  }
-
-  getTheatreIds(arr) {
-    return arr.map(theatre => theatre.id);
+    return this.allTheatres.map(theatre => {
+      return { name: theatre.name, id: theatre.id }
+    });
   }
 
 }

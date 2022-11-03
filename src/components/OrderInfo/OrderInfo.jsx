@@ -10,9 +10,9 @@ import { useDispatch } from 'react-redux';
 function OrderInfo() {
     const dispatch = useDispatch();
 
-    // useEffect(() => {
-    //     dispatch(clearOrder());
-    // }, [])
+    useEffect(() => {
+        dispatch(clearOrder());
+    }, [])
 
     const selectedProgram = useSelector(state => state.programEntries)
         .filter(entry => entry.selectedScreeningId !== "")[0];

@@ -6,6 +6,8 @@ import HomeCarousel from '../../components/Carousel/Carousel';
 import AdminPanel from '../../components/AdminPanel/AdminPanel';
 import FoodMenu from '../../components/FoodMenuPanel/FoodMenuPanel';
 import { useSelector } from 'react-redux';
+
+
 export default function HomePage(props) {
 
     const activeUser = useSelector(state => state.activeUser);

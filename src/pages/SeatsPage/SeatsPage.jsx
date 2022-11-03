@@ -5,7 +5,7 @@ import SeatMap from './components/SeatMap/SeatMap';
 import RedContainer from '../../components/RedContainer/RedContainer';
 import GreyButton from '../../components/Buttons/DarkButton';
 import { NavLink, useNavigate } from 'react-router-dom';
-
+import { screeningManager } from '../../model/ScreeningManager';
 import './SeatsPage.scss';
 import { useDispatch } from 'react-redux';
 import { clearOrder } from '../../store/OrderSlice';
@@ -15,6 +15,7 @@ import Button from 'react-bootstrap/Button';
 import { useEffect } from 'react';
 import Order from '../../model/Order';
 import { orderManager } from '../../model/OrderManager';
+import { updateEntryData } from '../../store/ProgramEntrySlice';
 
 export default function SeatsPage(props) {
 
@@ -25,10 +26,8 @@ export default function SeatsPage(props) {
     const orderSeats = order.seats;
     const selectedProgramEntryId = order.programId;
     const user = useSelector(state => state.activeUser);
-    const programEntries = useSelector(state => state.programEntries);
+    const programEntry = screeningManager.allScreenings.find(entry => entry.id === selectedProgramEntryId);
     const [buttonState, setButtonState] = useState(true);
-
-
     useEffect(() => {
         setButtonState(orderSeats.length === 0 ? true : false)
     }, [orderSeats])
@@ -38,8 +37,13 @@ export default function SeatsPage(props) {
         dispatch(clearOrder());
     }
 
+    const updateOccupiedSeats = (entry, seats) => {
+        const screening = entry.screenings.find(screening => screening.id === entry.selectedScreeningId);
+        const newOccupied = [...screening.occupiedSeats, ...seats];
+        screening.occupiedSeats = newOccupied;
+        dispatch(updateEntryData(JSON.parse(JSON.stringify(programEntry))));
+    }
     const handleOrder = () => {
-        const programEntry = programEntries.find(entry => entry.id === selectedProgramEntryId);
         const newOrder = new Order(
             user.username,
             programEntry.cinemaName,
@@ -49,9 +53,8 @@ export default function SeatsPage(props) {
             order.total,
             orderSeats
         )
+        updateOccupiedSeats(programEntry, orderSeats)
         orderManager.allOrders.push(newOrder);
-        console.log(newOrder)
-        console.log(orderManager.allOrders)
         navigate('/booking-complete');
     }
 
