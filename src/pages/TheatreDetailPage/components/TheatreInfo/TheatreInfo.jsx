@@ -72,7 +72,7 @@ function TheatreInfo(props) {
 
 
     return (
-        <GreyContainer className='container p-5 mb-4 theatreInfo rounded-3'>
+        <GreyContainer className='container-xxl p-5 mb-4 theatreInfo rounded-3'>
             <div className="row d-flex justify-content-center w-100">
                 <div className="col d-flex justify-content-center align-items-center">
                     <img src={image} alt='Cinema' className="cinemaImage rounded-3 mb-3" />

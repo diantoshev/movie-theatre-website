@@ -18,7 +18,7 @@ import { screeningManager } from '../../../../model/ScreeningManager';
 function ScreeningCard(props) {
     const isLogged = useSelector(state => state.activeUser.isLogged);
     const navigate = useNavigate();
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
     const [radioValue, setRadioValue] = useState('');
     const [button, setButton] = useState(true);
@@ -42,6 +42,11 @@ function ScreeningCard(props) {
         })
     }
 
+    const disableButtons = (e) => {
+        const allButtons = document.querySelectorAll('.buyTickets');
+        allButtons.forEach(button => button.disabled = 'true')
+    }
+
     const currentDate = useSelector(state => state.theatre.currentDate);
     const programEntries = screeningManager.allScreenings;
 
@@ -56,9 +61,9 @@ function ScreeningCard(props) {
         dispatch(clearPreviouslySelected());
         dispatch(updateSelectedProgramEntry(programEntry.id))
         dispatch(updateEntryData(JSON.parse(JSON.stringify(programEntry))));
-        setButton(false)
+        setButton(false);
         uncheckOtherToggles(e);
-
+        disableButtons(e);
     }
 
 

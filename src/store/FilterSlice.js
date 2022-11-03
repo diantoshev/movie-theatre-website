@@ -6,7 +6,7 @@ const initialState = {
     genre: '',
     movieId: '',
     date: '',
-    searQuery: '',
+    searchQuery: '',
     filteredGenres: [],
     filteredTitles: [],
     filteredDates: []
@@ -34,21 +34,38 @@ const movieFilter = createSlice({
             state.genre = '';
             state.movieId = '';
             state.date = '';
-            state.searQuery = '';
+            state.searchQuery = '';
             state.filteredGenres = [];
             state.filteredTitles = [];
             state.filteredDates = []
+        },
+        updateFilteredGenres: (state, action) => {
+            state.filteredGenres = [...action.payload]
+        },
+        updateFilteredTitles: (state, action) => {
+            state.filteredTitles = [...action.payload]
+        },
+        updateFilteredDates: (state, action) => {
+            state.filteredDates = [...action.payload]
+        },
+        updateSearchQuery: (state, action) => {
+            state.searchQuery = action.payload;
         }
     },
 
 })
 
 export const {
+    updateSearchQuery,
+    clearSearchEntry,
     updateFilteredMovies,
     updateTheatreSelect,
     updateGenreSelect,
     updateMovieSelect,
     updateDateSelect,
-    clearSearchEntries } = movieFilter.actions
+    clearSearchEntries,
+    updateFilteredGenres,
+    updateFilteredTitles,
+    updateFilteredDates } = movieFilter.actions
 
 export default movieFilter.reducer

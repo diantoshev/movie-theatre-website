@@ -65,7 +65,7 @@ export default function TheaterScreenings() {
 
   return (
     <>
-      <GreyContainer className=" program__container p-4 mb-4 container-fluid d-flex flex-column gap-4">
+      <GreyContainer className=" program__container p-4 container-xxl d-flex flex-column gap-4">
         <Tabs
           onSelect={(e) => handleSelect(e)}
           defaultActiveKey={defaultActiveTabKey}

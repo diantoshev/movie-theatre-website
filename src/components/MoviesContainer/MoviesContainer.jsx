@@ -5,47 +5,51 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { clearSearchEntries } from '../../store/FilterSlice';
-import { useLocation } from "react-router-dom";
-
+import { debounce } from '../../util/utilFuncs';
 export default function MoviesContainer(props) {
 
     // Filter processing:
     const program = useSelector(state => state.programEntries);
     const allMovies = useSelector(state => state.allMovies.data);
     const filter = useSelector(state => state.movieFilter);
+    let searchQuery = filter.searchQuery;
     let theatreSelect = filter.cinemaId;
     let genreSelect = filter.genre;
     let movieSelect = filter.movieId;
     let dateSelect = filter.date;
-    const isThereSearchEntry = theatreSelect || genreSelect || movieSelect || dateSelect;
+    const isThereSearchEntry = theatreSelect || genreSelect || movieSelect || dateSelect || searchQuery;
 
     const filterMovies = function () {
         const programEntries = program.filter(programEntry => programEntry.cinemaId === theatreSelect);
         const filteredMovieIds = Array.from(new Set(programEntries.map(entry => entry.movieId)));
         let result = [];
-        if (theatreSelect !== '') {
-            result = allMovies.filter(movie => filteredMovieIds.includes(movie.id));
+        if (searchQuery === '') {
+            if (theatreSelect !== '') {
+                result = allMovies.filter(movie => filteredMovieIds.includes(movie.id));
 
-        }
+            }
 
-        if (genreSelect !== '') {
-            result = allMovies.filter(movie => filteredMovieIds.includes(movie.id)
-                && movie.genre.toLowerCase().includes(genreSelect));
-        }
+            if (genreSelect !== '') {
+                result = allMovies.filter(movie => filteredMovieIds.includes(movie.id)
+                    && movie.genre.toLowerCase().includes(genreSelect));
+            }
 
-        if (movieSelect !== '') {
-            result = allMovies.filter(movie => filteredMovieIds.includes(movie.id)
-                && movie.genre.toLowerCase().includes(genreSelect)
-                && movie.id === movieSelect);
+            if (movieSelect !== '') {
+                result = allMovies.filter(movie => filteredMovieIds.includes(movie.id)
+                    && movie.genre.toLowerCase().includes(genreSelect)
+                    && movie.id === movieSelect);
+            }
+            if (dateSelect !== '') {
+                const availableDays = programEntries.filter(entry => entry.movieId === movieSelect)
+                    .map(entry => entry.date);
+                result = allMovies.filter(movie => filteredMovieIds.includes(movie.id)
+                    && movie.genre.toLowerCase().includes(genreSelect)
+                    && movie.id === movieSelect
+                    && availableDays.includes(dateSelect));
+            }
         }
-        if (dateSelect !== '') {
-            const availableDays = programEntries.filter(entry => entry.movieId === movieSelect)
-                .map(entry => entry.date);
-            console.log(availableDays);
-            result = allMovies.filter(movie => filteredMovieIds.includes(movie.id)
-                && movie.genre.toLowerCase().includes(genreSelect)
-                && movie.id === movieSelect
-                && availableDays.includes(dateSelect));
+        else {
+            result = allMovies.filter(movie => movie.title.toLowerCase().includes(searchQuery.toLowerCase()));
         }
         return result;
     }
@@ -68,7 +72,7 @@ export default function MoviesContainer(props) {
                         poster={movie.poster}
                     />
                 }) : isThereSearchEntry ?
-                    <p2 className='heading-2'> Sorry, we couldn't find what you are looking for</p2> :
+                    <h2 className='heading-2'> Sorry, we couldn't find what you are looking for...</h2> :
                     allMovies.map(movie => {
                         return <MovieCard
                             key={movie.id}
