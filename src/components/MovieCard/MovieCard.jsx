@@ -2,7 +2,7 @@ import Card from 'react-bootstrap/Card';
 import GreyContainer from '../GreyContainer/GeryContainer'
 import './MovieCard.scss';
 import ImageOverlay from '../ImageOverlay/ImageOverlay';
-import { IoTicketOutline } from 'react-icons/io5';
+import { BiInfoCircle } from 'react-icons/bi';
 import { MdOutlineFavoriteBorder } from 'react-icons/md';
 import { RiCloseCircleLine } from 'react-icons/ri';
 import { useSelector } from 'react-redux';
@@ -19,8 +19,8 @@ export default function MovieCard(props) {
                         {!(activeUser.isAdmin && activeUser.isLogged) ?
                             <ImageOverlay
                                 id={props.id}
-                                overlayBtnNavText='Buy Tickets'
-                                overlayBtnNavIcon={<IoTicketOutline />}
+                                overlayBtnNavText='More info'
+                                overlayBtnNavIcon={<BiInfoCircle />}
                                 overlayBtnNavLink={`/movies/${props.id}`}
                                 overlayBtnActionText='Add to favorites'
                                 overlayBtnActionIcon={<MdOutlineFavoriteBorder />}

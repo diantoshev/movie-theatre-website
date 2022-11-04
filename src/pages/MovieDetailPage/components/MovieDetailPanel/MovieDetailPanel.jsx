@@ -1,8 +1,11 @@
 import GoldContainer from "../../../../components/GoldContainer/GoldContainer";
 import GreyContainer from "../../../../components/GreyContainer/GeryContainer";
-import SelectScreeningForm from "../SelectScreeningForm/SelectScreeningForm";
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
+import { BiMoviePlay } from 'react-icons/bi';
+import Button from 'react-bootstrap/Button';
+import { useNavigate } from "react-router-dom";
+
 import './MovieDetailPanel.scss';
 
 function MovieDetailPanel() {
@@ -12,7 +15,7 @@ function MovieDetailPanel() {
     const currentMovieId = pathNameArr[pathNameArr.length - 1];
     const movieData = useSelector(state => state.allMovies.data);
     const currentMovie = movieData.find(movie => currentMovieId === movie.id);
-
+    const navigate = useNavigate();
     return (
         <GoldContainer className='container-xxl py-3 px-5 rounded-2 mb-3'>
             {currentMovie ?
@@ -29,8 +32,12 @@ function MovieDetailPanel() {
                             <p><strong>Director: </strong> {currentMovie.director}</p>
                             <p><strong>Cast: </strong> {currentMovie.cast}</p>
                             <p className="hideOnMobile"><strong>Synposis: </strong>{currentMovie.plot}</p>
+                            <Button
+                                className='buyTickets me-4 btn rounded-3 text-lg-center'
+                                size='lg'
+                                variant="outline-goldMid"
+                                onClick={() => navigate('/theatres/cin1')}><BiMoviePlay /> Check program</Button>
                         </div>
-                        <SelectScreeningForm />
                     </div>
                 </GreyContainer> : <div>Loading title...</div>}
         </GoldContainer>

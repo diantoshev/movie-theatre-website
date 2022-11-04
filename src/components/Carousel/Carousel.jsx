@@ -17,8 +17,7 @@ function HomeCarousel() {
                         alt="DC Leage of Super Pets"
                     />
                     <Carousel.Caption>
-                        <h3>DC Leage of Super Pets</h3>
-                        <p>When the Justice League are captured by Lex Luthor, Superman's dog, Krypto, forms a team of shelter-pets who were given super-powers...</p>
+                        <h3 className='text-goldMid show-on-mobile'>DC Leage of Super Pets</h3>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item className='carousel-item'>
@@ -29,10 +28,7 @@ function HomeCarousel() {
                     />
 
                     <Carousel.Caption>
-                        <h3>Black Panther: Wakanda Forever</h3>
-                        <p>
-                            The nation of Wakanda is pitted against intervening world powers as they mourn the loss of their king T'Challa...
-                        </p>
+                        <h3 className='text-goldMid show-on-mobile'>Black Panther: Wakanda Forever</h3>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item className='carousel-item'>
@@ -43,10 +39,8 @@ function HomeCarousel() {
                     />
 
                     <Carousel.Caption>
-                        <h3>Three Thousand Years of Longing</h3>
-                        <p>
-                            A lonely scholar, on a trip to Istanbul, discovers a Djinn who offers her three wishes in exchange for his freedom...
-                        </p>
+                        <h3 className='text-goldMid show-on-mobile'>Three Thousand Years of Longing</h3>
+
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item className='carousel-item'>
@@ -57,24 +51,18 @@ function HomeCarousel() {
                     />
 
                     <Carousel.Caption>
-                        <h3>Avatar: The Way of Water</h3>
-                        <p>
-                            Jake Sully lives with his newfound family formed on the planet of Pandora. Once a familiar threat returns to finish what was previously started, Jake must work with Neytiri and the army of the Na'vi race to protect their planet.
-                        </p>
+                        <h3 className='text-goldMid show-on-mobile'>Avatar: The Way of Water</h3>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item className='carousel-item'>
                     <img
-                        className="d-block w-100"
+                        className="d-block w-100 h-100"
                         src={carousel5}
                         alt="Halloween Ends"
                     />
 
                     <Carousel.Caption>
-                        <h3>Halloween Ends</h3>
-                        <p>
-                            The saga of Michael Myers and Laurie Strode comes to a spine-chilling climax in this final installment of this trilogy.
-                        </p>
+                        <h3 className='text-goldMid show-on-mobile'>Halloween Ends</h3>
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>

@@ -10,4 +10,16 @@
         object-fit: scale-down;
         object-position: center;
     }
+
+    .show-on-mobile {
+        display: none;
+    }
+}
+
+@media (max-width: 575px) {
+
+    .show-on-mobile {
+        display: block;
+    }
+
 }
