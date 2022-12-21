@@ -17,6 +17,7 @@ export const loginUser = createAsyncThunk(
       body: JSON.stringify({ username, password }),
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
       },
     }).then((res) => {
       try {
@@ -40,7 +41,10 @@ export const logoutUser = createAsyncThunk(
     return fetch(`https://itt-voting-api.herokuapp.com/logout`, {
       method: "POST",
       body: JSON.stringify({ id: `${sessionId}` }),
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
+      },
     }).then((res) => {
       if (res.ok) {
         if (localStorage.getItem("rememberedMovieSpotUser")) {
